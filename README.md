@@ -2,30 +2,12 @@
 实现自己的一个jQuery ，
 
 ## 基础知识
-### 什么是伪数组？
- 1. 伪数组是一个非数组类型对象
- 2. 有一个length属性，值为number类型
- 3. 存在下标方式存储数据
- 
- 		var obj = {
-			0:1,
-			1:'2sfd',
-			length:2
-		}
-		var obj2 = {
-			length:0
-		}
-    	var obj3 = {
-			0:1,
-			1:'2sfd',
-			name:'abc',
-			length:3
-		}
 
-		
 
-### 函数的返回值
+[1.需要具备的基础知识>>>](./base/README.md)
 
+
+	
 ### 实列成员，静态成员
 jQ的静态成员 $.ajax
 
