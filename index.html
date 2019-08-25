@@ -8,15 +8,23 @@
 </head>
 <body>
     <script src="./myjQ.js"></script>   
-
+    <span>0</span>
+    <span>1</span>
     <script>
-    
-    
-        $.fn.alert = function(){
-            console.log('mmm');
+        console.log(document.querySelectorAll('span'));
+        $(function(){
+            console.log(document.querySelectorAll('span'));
             
-        }
-        $().alert()
+        })
+        
+        console.log($(document.querySelectorAll('span')));
+        console.log($('<a class="active123">2222</a>'));
+
+        
     </script>
+
+    <span>2</span>
+    <span>2</span>
+    <span>2</span>
 </body>
 </html>
