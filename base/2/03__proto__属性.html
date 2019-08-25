@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * __proto__属性是一个非标准的属性，IE9以前是没有这个属性，
+			 * 后来所有的现代浏览器虽然都拥有了该属性，并支持修改与访问， 
+			 * 但是不属于范围内的东西，所以不建议开发当中直接使用。
+			 * 
+			 * 不过__proto__可以用作原型的研究。
+			 * 
+			 * 
+			 * ECMAScript在指定原型的时候，已经制定好了一个标准的设置原型方式，
+			 * 这种需要依赖于构造函数的一个属性:prototype。
+			 * 默认情况下，通过构造函数创建的实例，它的原型指向构造函数的prototype。
+			 * */
+			
+			// 创建狗的构造函数，也可以称之为类
+			function Dog(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			
+			// 构造函数默认就有一个prototype属性，存储的是一个对象的地址，
+			// 实例默认就会继承这个对象，所以只需把需要共享的方法或属性直接放置到这里即可。
+			Dog.prototype.wowo = function() {
+				console.log('旺旺！');
+			};
+			
+			// 类仅仅相当于是一个模版，要想创建出实例，需要配合new关键字
+			var taidi = new Dog('泰迪', 3);
+			var hashiqi = new Dog('哈士奇', 3);
+			
+			// 仍然可以调用woow，不同实例的wowo也同样相等
+			taidi.wowo();
+			hashiqi.wowo();
+			console.log(taidi.wowo == hashiqi.wowo);
+		</script>
+	</body>
+</html>

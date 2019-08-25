@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 在js中，直接给一个未声明过变量赋值，
+			// 是不会报错的，这种方式会产生一个全局变量，
+			// 但是这种写法容易造成理解上的错误，以及维护上的困难，所以不推荐使用。
+			
+			a = 10;
+			console.log(a);
+			
+			(function() {
+				b = 100;
+				console.log(b);
+			})();
+			
+			// 可以访问，因为预期的局部变量b没有使用var定义，最终定义为了全局变量
+			console.log(b);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 在js中有3种包装类型的对象：
+			 * String、Number、Boolean
+			 * */
+			
+			// 这是一个简单数据类型，特点是没有属性没有方法
+			var str = 'abcd';
+			
+			// 为什么简单数据类型可以访问属性与方法，
+			// 因为js为这个简单数据类型提供了一个对应的包装类型对象,
+			// 当我们使用简单数据类型访问属于与方法的时候，
+			// js内部会自动创建对应的包装类型对象，然后通过这个对象调用属性与方法。
+			console.log(str.length);   // new String('abcd').length;
+			console.log(str.slice(1));  // new String('abcd').slice(1);
+			console.log(str.xxxxxx);  // new String('abcd').xxxxxx;
+			
+			// 这是一个简单数据类型，特点是没有属性没有方法
+			var nu = null;
+			
+			// 但是null没有对应的包装类型对象，所以访问属性与方法时会报错
+			console.log(nu.length);
+		</script>
+	</body>
+</html>

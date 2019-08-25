@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 闭包：
+			 * 指一个有权访问非自身局部变量(排除全局变量)的函数。
+			 * 指一个有权访问自由变量的函数，这个自由变量通常不是全局变量。
+			 * 
+			 * 自由变量：
+			 * 相对一个函数来讲，其内部可以访问的非自身定义的变量，称之为该函数的自由变量。
+			 * */
+			
+			var a = 10;
+			
+			function outFn() {
+				
+				// b变量相对于inFn来说，是它的自由变量。
+				var b = 20;
+				
+				// inFn可以访问outFn里面的局部变量，所以inFn为闭包
+				function inFn() {
+					console.log(b);
+				}
+			}
+		</script>
+	</body>
+</html>

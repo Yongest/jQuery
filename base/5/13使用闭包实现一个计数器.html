@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// 实现一个计数功能，下面的代码可以实现，但是存在一点问题，就是total变量不安全。
+			var total = 0;
+			total++;
+			total++;
+			console.log(total);
+			
+			// 如果不小心存在这么一句话，就毁了。
+			total = 10;
+			
+			/*------------------------------------------*/
+			
+			function getCounter() {
+				var total = 0;
+				return function() {
+					console.log(++total);
+				};
+			}
+			
+			var counter = getCounter();
+			counter();
+			counter();
+			
+			// 使用这种方式管理total，外界无法侵犯它的，比较安全。
+			total = 10;
+			
+		</script>
+	</body>
+</html>

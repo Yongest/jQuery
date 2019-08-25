@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// js采用的词法作用域规定，优先找自己作用域的下变量，找不到去定义该函数的地方找，直到全局。
+			function fn() {
+				console.log(a);  // 报错，如果是动态作用域，就可以找到10.
+			}
+			(function() {
+				var a = 10;
+				fn();
+			})();
+			
+//			## 动态作用域
+//			查找一个变量，优先找函数自己作用域内的变量，找不到就去调用该函数的作用域中去找，
+//			按照这个规则直到全局都没有找到，就报错。
+		</script>
+	</body>
+</html>

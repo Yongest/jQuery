@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 伪数组：
+			 * 假冒数组，但是他的使用方式和数组类似，都通过下标访问值，通过length属性获取值的数量。
+			 * 
+			 * 伪数组类似于下面这个样子：
+			 * var arrLike = { 0: 'nba', 1: 'tba', length: 2 }
+			 * 
+			 * arguments：
+			 * 这是一个函数运行时内部提供的对象，这个对象的使用方式和数组类似，所以称之为伪数组。
+			 * 它可以通过下标访问函数调用时传递进行的实参，通过length属性得到实参的个数。
+			 * 
+			 * arguments的作用：
+			 * 可以模拟其他语言的重载。
+			 * */
+			
+			function add() {
+				console.log(arguments);
+			}
+			
+			add();
+			add(1,2);
+			
+			
+			// 在某些语言中，可以存在同名的函数，只要他们的形参个数不同即可。
+			// 但是在js中不可以，后面的函数会覆盖掉前面的函数。
+			
+			function add(a, b) {
+				
+			}
+			
+			function add(a, b, c) {
+				
+			}
+			
+			add(1,2); // 自动调用2个形参的add
+			add(1,2,3);  // 自动调用3个形参的add
+		
+			/*-------------------------------------------------------------------------------*/
+			// 使用arguments来模拟上面函数的重载
+			function add() {
+				if(arguments.length == 2) {
+					return arguments[0] + arguments[1];
+				}else if(arguments.length == 3) {
+					return arguments[0] + arguments[1] + arguments[2];
+				}
+			}
+			add(1,2); 
+			add(1,2,3);  
+			
+			/*-------------------------------------------------------------------------------*/
+			// 实现一个add方法，可以计算任意多数量的合。
+			function add() {
+				var result = 0;
+				for(var i = 0, len = arguments.length; i < len; i++) {
+					result += arguments[i];
+				}
+				return result;
+			}
+			
+		</script>
+	</body>
+</html>

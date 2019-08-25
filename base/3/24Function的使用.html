@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 创建函数的方式有两种：
+			 * 1、字面量  
+			 *    function fn(){}
+			 * 2、new 构造函数
+			 *    var fn = new Function();
+			 * */
+			
+			/**
+			 * Function：
+			 * 作用：用来创建函数实例
+			 * 语法：new Function(形参1， 形参2， 形参3..., 函数的代码体)
+			 * 		要求传入给Function的参数，都是字符串。
+			 * 返回值：一个新函数
+			 * */
+			
+//			function con(log) {
+//				console.log(log);
+//			}
+//			
+//			var conso = new Function('log', 'console.log(log);');
+//			
+//			// 测试两种创建函数的方式
+//			con('普通方式创建的函数');
+//			conso('new方式创建的函数');
+			
+			/*————————————————————————————————————————————*/
+			
+			
+			// 计算任意多数值的和
+			function add() {
+				var result = 0;
+				for(var i = 0, len = arguments.length; i < len; i++) {
+					result += arguments[i];
+				}
+				console.log(result);
+			}
+			var add2 = new Function(
+				'var result = 0; \
+				for(var i = 0, len = arguments.length; i < len; i++) { \
+					result += arguments[i]; \
+				} \
+				console.log(result);'
+			);
+			
+			add(10, 20, 30, 40, 50, 60); 
+			add2(11, 22, 33, 44, 55, 66); 
+		</script>
+	</body>
+</html>

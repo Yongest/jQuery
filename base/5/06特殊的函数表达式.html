@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			/**
+			 * 函数表达式的特殊情况：
+			 * 1、函数表达式定义的函数名，是无法在外界访问，但在函数内是可以访问的。
+			 * 2、写在代码空中的函数，函数名会被预解析，函数整体不会。
+			 * */
+			
+			console.log(f); // undefined
+			console.log(fff); 报错
+			console.log(fn); 报错
+			console.log(fun); // undefined
+			
+			var f = function fff(){}
+			(function fn(){
+				console.log(fn);
+				
+				/**
+				 * 预解析：
+				 * function fn(){}
+				 * 
+				 * 逐行执行：
+				 * console.log(fn);
+				 * */
+			})();
+			{
+				function fun(){}
+			}
+			
+			console.log(f); // fff函数
+			console.log(fff); // 报错
+			console.log(fn); // 报错
+			console.log(fun); // fun函数体
+			
+			/**
+			 * 上面代码的执行过程：
+			 * 
+			 * 预解析：
+			 * var f;
+			 * var fun;
+			 * 
+			 * 逐行执行：
+			 * console.log(f); // undefined
+			 * console.log(fff); // 报错
+			 * console.log(fn); // 报错
+			 * console.log(fun); // undefined
+			 * 
+			 * f = function fff(){}
+			 * 自调执行，自调的名字在外界不会定义，但是在自调内部会定义，自调内部打印fn，可以打印成功。
+			 * fun = function fun(){}
+			 * 
+			 * console.log(f); // 打印fff函数体
+			 * console.log(fff); // 报错
+			 * console.log(fn); // 报错
+			 * console.log(fun); // 打印fun函数体
+			 * 
+			 * */
+		</script>
+	</body>
+</html>

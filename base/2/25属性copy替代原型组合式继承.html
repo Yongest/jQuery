@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function HuoXingRen(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			HuoXingRen.prototype = {
+				teSuNengLi: function() {
+					console.log('瞬间转移');
+				},
+				aiQingTeXiao: function() {
+					console.log('一秒爱上我');
+				}
+			};
+			
+			
+			function Animal(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			Animal.prototype = {
+				eat: function() {
+					console.log('动物改不了吃');
+				},
+				run: function() {
+					console.log('不能动的不叫动物');
+				}
+			};
+			
+			function Person(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			for(var key in Animal.prototype) {
+				Person.prototype[key] = Animal.prototype[key];
+			}
+			for(var key in HuoXingRen.prototype) {
+				Person.prototype[key] = HuoXingRen.prototype[key];
+			}
+			Person.prototype.study = function() {
+				console.log('人类独有的学习方法');
+			};
+			
+
+			var feng = new Person('凤', 30, '女');
+			feng.aiQingTeXiao();
+			feng.run();
+			feng.study();
+			
+		</script>
+	</body>
+</html>

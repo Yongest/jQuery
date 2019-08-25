@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				val: 8888
+			};
+			Object.prototype.itcast = 'CZ';
+			
+			// obj可以使用很多内置的方法，这些方法都来自与它的原型，
+			// 但是对于原型上内置的方法，是无法遍历出来的。
+			obj.toString();
+			obj.hasOwnProperty('val');
+			
+			// 遍历得到obj所有的属性
+			// 只遍历得到val属性好itcast，对于浏览器内置的属性，默认是不遍历的(不可枚举)。
+			for(var key in obj) {
+				console.log(key);
+			}
+		</script>
+	</body>
+</html>

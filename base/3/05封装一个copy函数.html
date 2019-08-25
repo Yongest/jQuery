@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 需求：该方法接收两个对象，会把第二个对象的所有属性依次copy到第一个对象中，返回第一个对象
+//			function copy(o1, o2) {
+//				for(var key in o2) {
+//					o1[key] = o2[key];
+//				}
+//				return o1;
+//			}
+//			
+//			// 测试用例
+//			var o1 = {};
+//			var o2 = {
+//				RMB: 6400,
+//				$: '800$'
+//			};
+//			console.log(copy(o1, o2));
+			
+			// 需求：该方法接收多个对象，会把后面所有的对象属性依次copy到第一个对象中，返回第一个对象
+			function copy() {
+				/*
+				 * 1、先使用一个变量存储第一个对象
+				 * 2、从下标1开始遍历arguments得到后面的所有对象
+				 * 3、再遍历每一个后面对象的属性，依次copy给第一个对象
+				 * 4、return第一个对象
+				 * */
+				var target = arguments[0];
+				
+				for(var i = 1, len = arguments.length; i < len; i++) {
+					for(var key in arguments[i]) {
+						target[key] = arguments[i][key];
+					}
+				}
+				
+				return target;
+			}
+			
+			// 测试用例
+			var o1 = {};
+			var o2 = {
+				$: '800$'
+			};
+			var o3 = {
+				RMB: 6400
+			};
+			var o4 = {
+				YB: 500
+			};
+			console.log(copy(o1, o2, o3, o4));
+		</script>
+	</body>
+</html>

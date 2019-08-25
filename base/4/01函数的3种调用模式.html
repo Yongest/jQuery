@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 一个函数的调用方式不同，this指向也不同，通常函数有如下3种调用模式：
+			 * 函数内this指向是随时在变化的，调用方法不同指向就不同，同时这个this指向与函数的定义无关。
+			 * 
+			 * 1、函数调用模式 
+			 *     函数名()  ==>  window
+			 * 2、方法调用模式
+			 *     这种调用模式中的方法，可能来自于自己，也可能来自于继承的对象。
+			 *     对象.方法名() || 对象[方法名] ==> 宿主对象
+			 *     对象.子对象.方法名() || 对象.子对象.[方法名] ==> 宿主对象
+			 * 3、构造器调用模式
+			 *     new 构造函数() || new 对象.方法名() ==> new出来的新实例
+			 * */
+			
+			/*-----------函数名直接调用，或者自调，都属于函数调用模式，this都为window---------*/
+			
+			function fn() {
+				console.log(this);
+			}
+			fn();
+			
+			(function(){
+				console.log(this);
+			})();
+			
+			/*---------对象调用，属于方法调用模式，this为宿主对象-----------*/
+			
+			var obj = {
+				fn: function fn() {
+					console.log(this);
+				},
+				fns: [
+					function() {
+						console.log(this);
+					},
+					function() {
+						console.log(this);
+					}
+				]
+			};
+			
+			obj.fn();     // obj对象
+			obj.fns[1](); // fns数组
+			
+			/*----new 构造构造，属于构造器调用模式，this为new出来的新实例------*/
+			
+			function fn() {
+				console.log(this);
+			}
+			var o = {
+				fn: function() {
+					console.log(this);
+				}
+			}
+			
+			new fn();   // fn的新实例
+			new o.fn(); // fn的新实例
+			
+			
+		</script>
+	</body>
+</html>

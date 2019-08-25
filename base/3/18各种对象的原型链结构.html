@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// arr ==> Array.prototype ==> Object.prototype ==> null
+			var arr = [];
+			// Arr ==> Function.prototype ==> Object.prototype ==> null
+			var Arr = Array;
+			
+			// obj ==> Object.prototype ==> null
+			var obj = {};
+			
+			// Person ==> Function.prototype ==> Object.prototype ==> null
+			function Person(){}
+			
+			// p ==> Person.prototype ==> Object.prototype ==> null
+			var p = new Person();
+		</script>
+	</body>
+</html>

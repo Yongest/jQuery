@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 假设Object.prototype是原型的终点，那么就应该所有的对象都继承它。
+			 * 
+			 * 那么我们就取几种类型的对象，分别进行验证。
+			 * */
+			
+			Object.prototype.itcast = 'CZ';
+			
+			var arr = [];
+			var obj = {};
+			var reg = /abc/;
+			var fn = function(){};
+			var date = new Date();
+			
+			// 发现所有类型的对象，都可以使用Object.prototype上的属性，
+			// 基本上就应征了它是原型终点的猜想。
+			console.log(arr.itcast);
+			console.log(obj.itcast);
+			console.log(reg.itcast);
+			console.log(fn.itcast);
+			console.log(date.itcast);
+		</script>
+	</body>
+</html>

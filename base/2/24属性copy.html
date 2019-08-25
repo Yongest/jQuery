@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o1 = {
+				$: 600,
+				RMB: 3600,
+				f: function(){
+					console.log('f');
+				},
+				fn: function(){
+					console.log('fn');
+				}
+			};
+			
+			var o2 = Object.create(o1);
+			console.log(o2.$);
+			console.log(o2.RMB);
+			o2.f();
+			o2.fn();
+			
+			/*-----------------------------------------*/
+			
+			var o22 = {};
+			for(var key in o1) {
+				o22[key] = o1[key];
+			}
+			console.log(o22.$);
+			console.log(o22.RMB);
+			o22.f();
+			o22.fn();
+			
+		</script>
+	</body>
+</html>

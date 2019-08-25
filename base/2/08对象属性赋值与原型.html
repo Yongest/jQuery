@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 属性赋值：
+			 * 1、属性赋值时需要注意修改的那个对象的属性
+			 * 2、属性赋值时是不会修改其原型上的属性（只会影响自己）
+			 * */
+			
+			var obj = {};
+			
+			obj.__proto__ = {
+				name: 'hh',
+				age: 16
+			};
+			
+			console.log(obj.name);
+			
+			obj.name = 'ff';
+			console.log(obj.name);       // 这是修改obj自己的name属性，不会修改其原型上的属性
+			console.log(obj.__proto__.name);  
+			
+		</script>
+	</body>
+</html>

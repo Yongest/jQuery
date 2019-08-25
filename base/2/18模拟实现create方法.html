@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 实现一个函数，函数接收一个原型对象，最终返回一个继承传入的原型的对象。
+			function myCreate(protoObj) {
+				var o = {};
+				o.__proto__ = protoObj;
+				return o;
+			}
+			
+			// 调用该方法，返回一个继承指定原型的对象，
+			// 其本质就是返回一个构造函数的实例，构造函数的原型为指定原型。
+			function myCreate2(protoObj) {
+				function F(){}
+				F.prototype = protoObj;
+				return new F();
+			}
+			
+			// 测试脚本
+			var pro = {
+				$: '800$',
+				RMB: '6400'
+			};
+			
+			var newObj = myCreate2(pro);
+			console.log(newObj.RMB);   // 预期打印6400
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 在js中，有两个对象就采用了单例模式：
+			 * JSON、Math
+			 * 
+			 * 单例模式：
+			 * 就是某种对象只能存在一个实例，不能创造第二个。
+			 * */
+			
+//			// 单例模式，地球实例只存在一个
+//			var diqiu = (function() {
+//				function DiQiu() {
+//				
+//				}
+//				return new DiQiu();
+//			})();
+//			
+//			// 可以认为我们js提供的JSON就是这样创建的一个单例
+//			var JSON = (function() {
+//				function _JSON_() {
+//				
+//				}
+//				return new _JSON_();
+//			})();
+
+
+
+			/*---------------------------------------------*/
+			
+			var DiQiu = (function() {
+				
+				// 用来缓存第一次创建的地球实例
+				var diqiu = null;
+				
+				return function(name) {
+					
+					// 如果已经创建过地球实例了，那么就直接返回直接创建多的那个实例，
+					// 这样包装地球只有一个，实现一个单例模式。
+					if(diqiu) {
+						return diqiu;
+					}
+					
+					// 如果之前没有创建过实例，那么给新实例进行属性初始化，然后把新实例缓存起来，以便下次使用
+					this.name = name;
+					diqiu = this;
+				}
+				
+			})();
+			
+			var diqiu = new DiQiu('地球');  // 第一次new或创建一个新实例
+			var diqiu2 = new DiQiu('地球'); // 以后new得到的永远是第一次new出来的实例
+			console.log(diqiu === diqiu2);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+    	// 这道题与引用数据类型赋值有关，与局部变量和全局变量也有关
+//      var obj = {};
+//      function foo( obj ) {
+//          obj.name = '宅男';
+//          obj = {};
+//          obj.name = '腐女';
+//      }
+//      foo(obj);  
+//      console.log(obj.name); // 宅男
+        
+        /*------------------------------------------------------------------------*/
+       
+       // 这道题与引用数据类型赋值有关，与局部变量和全局变量也有关
+       // foo函数去掉形参，那么这里操作的obj全部都是全局变量，最终全局变量的name就是腐女了
+        var obj = {};
+        function foo() {
+            obj.name = '宅男';
+            obj = {};
+            obj.name = '腐女';
+        }
+        foo(obj);  
+        console.log(obj.name); // 腐女
+    </script>
+</body>
+</html>

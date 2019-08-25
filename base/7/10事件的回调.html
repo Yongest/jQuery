@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			document.addEventListener('click', function() {
+//				console.log('点击页面之前做的计划1');
+//			});
+//			document.addEventListener('click', function() {
+//				console.log('点击页面之前做的计划2');
+//			});
+			
+			
+			// 这就相当于狗中的addEventListener方法
+			document.onclick = function() {
+				console.log('点击页面之前做的计划1');
+			};
+			
+			// 这就相当于狗中的wow方法，当狗wow的时，传入给addEventListener的回调，会自动被执行。
+			document.onclick();
+		</script>
+	</body>
+</html>
+

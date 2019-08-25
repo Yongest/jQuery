@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = ['nba', 'tnb', 'znb'];
+			
+			/**
+			 * 对象的属性访问方式
+			 * 
+			 * 一：点语法
+			 * 该语法有很多限制，不能是数字，不能是变量，只能是字符串属性名
+			 * 
+			 * 二：中括号语法
+			 * 该语法比较灵活，可以是数字、字符串、变量。
+			 * 
+			 * */
+			
+			// 访问arr的值，需要使用数字，那么只能通过中括号语法。
+			console.log(arr[0]);
+			
+			// 访问length的值，是字符串属性名，既可以使用点语法，又可以使用中括号语法。
+			// 但是使用中括号语法需要注意，给length添加引号，告诉对方这是一个字符串名字，否则会认为是变量
+			console.log(arr.length);
+			console.log(arr['length']);
+			
+			// 使用变量访问arr的值
+			var a = 1;
+			console.log(arr[a]);
+			a = 'length';
+			console.log(arr[a]);
+		</script>
+	</body>
+</html>

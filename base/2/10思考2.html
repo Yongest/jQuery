@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person() {
+				
+			}
+			
+			function Animal() {
+				
+			}
+			
+			Animal.prototype.say = function() {
+				console.log('不能说人话');
+			};
+			
+			
+			// ren不能访问动物原型上的方法
+			var ren = new Person();
+			ren.say();
+			
+			// 除非你手动修改了ren的原型为动物prototype
+			r/*en.__proto__ = Animal.prototype;
+			ren.say();*/
+		</script>
+	</body>
+</html>

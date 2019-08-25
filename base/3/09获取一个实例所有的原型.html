@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Animal(name, age, color) {
+				this.name = name;
+				this.age = age;
+				this.color = color;
+			}
+			Animal.prototype.eat = function() {
+				console.log('谁不爱吃呢?');
+			};
+			
+			// 松鼠实例
+			var songshu = new Animal('松鼠', 2, '灰色');
+			
+			
+			// 通过访问对象原型的constructor，可以获知这个原型的身份
+			console.log(songshu.__proto__);
+			console.log(songshu.__proto__.constructor);
+			
+			// 继续往上研究songshu的原型
+			console.log(songshu.__proto__.__proto__);  // Object.prototype
+			console.log(songshu.__proto__.__proto__.constructor); // Object
+			
+			// 继续往上研究songshu的原型
+			console.log(songshu.__proto__.__proto__.__proto__);  // null
+
+		</script>
+	</body>
+</html>

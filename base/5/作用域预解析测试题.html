@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考题</title>
+</head>
+<body>
+    <script>
+         // 考题一，变量声明提升及没有块级作用域：
+//       console.log(a);  // undefined
+//       if (false) {
+//          var a = 10;
+//       }
+//       console.log(a);  // undefined
+// 
+		 
+
+        // 考题二，考变量提升和没有块级作用域：
+//      console.log(a);   // undefined
+//      if ('a' in window) {
+//          var a = 10;
+//      }
+//      console.log(a);  // 10
+
+
+        // 考题三，考函数作用域：
+//      if ('a' in window) {
+//          (function(){
+//              var a = 10;
+//          }());
+//      }
+//      console.log(a);  // 报错，a是局部变量
+
+
+         // 考题四，考函数作用域：
+//       var val = 321;
+//       function test() {
+//          if(true) {
+//              var val = 123;
+//          }
+//       }
+//       test();
+//       console.log(val); // 321
+
+
+        // 考题五，考函数作用域：
+//      (function fn() {
+//          function fn1 () {
+//              var a = 1;
+//          }
+//          (function fn2 () {
+//              fn1()
+//              console.log(a);
+//          })();
+//      })();
+
+        // 考题六，考词法作用域：
+//      var val = 1;
+//      function add1() {
+//          console.log(val + 1);  // 2
+//      }
+//      (function () {
+//          var val = 10;
+//          add1();
+//      }());
+
+        // 考题七，综合性考题。
+//      var a = 20;
+//      (function fn() {
+//          if (false) { var a = 10 }
+//          (function fn2 () {
+//              console.log(a);   // undefined
+//              
+//              /**
+//               * 预解析：
+//               * 
+//               * 逐行执行：
+//               * console.log(a);
+//               * */
+//          })();
+//          
+//          /**
+//           * 预解析：
+//           * var a;
+//           * 
+//           * 逐行执行：
+//           * fn2自调调用；
+//           * */
+//      })();
+        
+        /**
+         * 预解析：
+         * var a;
+         * 
+         * 逐行执行：
+         * a = 20;
+         * fn自调调用;
+         * */
+
+        // 考题八，函数内预解析。
+        // 函数执行时，可能存在形参，会优先给形参赋值，然后才是预解析和逐行执行。
+//      function fn(a) {
+//          console.log(a); // undefined    200
+//          var a = 2;  
+//          console.log(a);  // 2   2
+
+//          
+//          /**
+//           * 函数运行环境初始化：
+//           * var a;
+//           * 
+//           * 预解析：
+//           * var a; 在环境初始化阶段已经定义过a了，所以忽略
+//           * 
+//           * 逐行执行：
+//           * console.log(a);  // undefined
+//           * a = 2;  
+//           * console.log(a);  // 2
+//           * */
+//          
+//          /**
+//           * 
+//           * 函数运行环境初始化：
+//           * var a;
+//           * a = 200;
+//           * 
+//           * 预解析：
+//           * var a; 在环境初始化阶段已经定义过a了，所以忽略
+//           * 
+//           * 逐行执行：
+//           * console.log(a);  // 200
+//           * a = 2;  
+//           * console.log(a);  // 2
+//           * */
+//      }
+//      fn();
+//      fn(200);
+
+        //考题九，考变量查找规则。
+//      var a = 1;
+//      function fn(a) {
+//          console.log(a); // undefined
+//          a = 2;
+//          console.log(a);  // 2
+//          
+//          /**
+//           * 函数运行环境初始化：
+//           * var a;
+//           * 
+//           * 预解析：
+//           * 
+//           * 逐行执行：
+//           * console.log(a); // undefined
+//           * a = 2;
+//           * console.log(a); // 2
+//           * */
+//      }
+//      fn();
+//      console.log(a);  // 1
+        
+        /*
+         * 预解析：
+         * var a;
+         * fn函数声明;
+         * 
+         * 逐行执行:
+         * a = 1;
+         * fn();
+         * console.log(a); // 1
+         * */
+
+        // 考题十，词法作用域
+//      var a = 100;
+//      function fn() {
+//          console.log(a);  // 100
+//      }
+//      function fn2() {
+//          var a = 1;
+//          fn();
+//          function fn3 () {
+//              var type = 'fn';
+//              console.log(a); // 1
+//          }
+//          fn3();
+//      }
+//      fn2();
+
+         // 考题十一
+//       console.log(a); // fn2函数体
+//       var a = 1;
+//       console.log(a); // 1
+//       function a() { console.log('fn1') }
+//       console.log(a); // 1
+//       var a = 3;
+//       console.log(a); // 3
+//       function a() { console.log('fn2') }
+//       console.log(a); // 3
+//       var a = function () { console.log('fn3') };
+//       console.log(a); // fn3函数体
+
+         // 考题十二
+//       var a = 1;
+//       function fn() {
+//           console.log(a);  // 1
+//           a = 2;
+//           console.log(a);  // 2
+//           
+//           /**
+//            * 预解析：
+//            * 
+//            * 逐行执行：
+//            * console.log(a); // 找内部没有，去外面找到a为1
+//            * a = 2;  // 内部没有，修改的是外面的a
+//            * console.log(a); // 找内部没有，去外面找到a为2
+//            * */
+//       }
+//       fn();
+//       console.log(a);   // 2
+         
+         /*
+          * 预解析：
+          * var a;
+          * fn函数声明；
+          * 
+          * 逐行执行：
+          * a = 1;
+          * fn();
+          * console.log(a);  // 2
+          * */
+
+         // 考题十三
+//       var a = 1;
+//       function fn(a) {
+//           console.log(a);  //1
+//           var a = 2;
+//           function a() {}
+//           console.log(a);  // 2
+//           
+//           /**
+//            * 
+//            * 函数运行环境初始化：
+//            * var a;
+//            * a = 1;
+//            * 
+//            * 预解析：
+//            * var a；变量重复忽略
+//            * a函数声明；保留函数
+//            * 
+//            * 逐行执行:
+//            * console.log(a); // a函数
+//            * a = 2;
+//            *  console.log(a); // 2
+//            * */
+//       }
+//       fn(a); 
+         
+         /*
+          * 预解析：
+          * var a;
+          * fn函数声明；
+          * 
+          * 逐行执行：
+          * a = 1;
+          * fn(a);
+          * */
+
+//       // 考题十四，函数写在代码块中的预解析处理
+         console.log(f);  // undefined
+         if (true) {
+             function f() {
+                 console.log(1);
+             }
+         }else {
+             function f() {
+                 console.log(2);
+             }
+         }
+         console.log(f); // 打印1的函数
+    </script>
+</body>
+</html>

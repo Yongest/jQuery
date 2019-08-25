@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// obj ==> Object.prototype ==> null
+			var obj = {};
+			
+			console.log(obj.__proto__);
+			console.log(obj.__proto__.constructor);
+			
+			console.log(obj.__proto__.__proto__);
+			//console.log(obj.__proto__.__proto__.constructor);
+			
+			/*-----------------------------------------*/
+			
+			// o ==> Object.prototype ==> null
+			var o = new Object();
+		</script>
+	</body>
+</html>

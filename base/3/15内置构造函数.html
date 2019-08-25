@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 所有函数类型的对象，它们的原型链是一样的。
+			// 这就好比所有数组类型的对象，它们的原型链也是一样的。
+			
+			// Array ==> Function.prototype ==> Object.prototype ==> null
+			console.log(Array.__proto__.constructor);
+			console.log(Array.__proto__.__proto__.constructor);
+			
+		    // Object ==> Function.prototype ==> Object.prototype ==> null
+			console.log(Object.__proto__.constructor);
+			console.log(Object.__proto__.__proto__.constructor);
+			
+			// Function ==> Function.prototype ==> Object.prototype ==> null
+			console.log(Function.__proto__.constructor);
+			console.log(Function.__proto__.__proto__.constructor);
+			
+			// String ==> Function.prototype ==> Object.prototype ==> null
+			console.log(String.__proto__.constructor);
+			console.log(String.__proto__.__proto__.constructor);
+		
+		</script>
+	</body>
+</html>

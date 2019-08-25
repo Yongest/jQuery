@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * // 基本数据类型
+			 * 基本类型，不传、null、undefined，this指向window，
+			 * 数字、字符串、布尔类型，this指向它们的包装类型对象。
+			 * 
+			 * 函数.call() ==> this会怎样
+			 * 函数.call(null) ==> this会怎样
+			 * 函数.call(undefined) ==> this会怎样
+			 * 函数.call(123) ==> this会怎样
+			 * 函数.call('abc') ==> this会怎样
+			 * 函数.call(true) ==> this会怎样
+			 * 
+			 * // 复杂数据类型 
+			 * 对象类型，传什么this指向什么
+			 * 
+			 * 函数.call([1,2,3]) ==> this会怎样
+			 * 函数.call(Date) ==> this会怎样
+			 * 函数.call(new Date) ==> this会怎样
+			 * 
+			 * */
+			
+			function fn() {
+				console.log(this);
+			}
+			
+			fn.call();
+			fn.call(null);
+			fn.call(undefined);
+			fn.call(123);
+			fn.call('abc');
+			fn.call(true);
+			
+			// 对象类型，传什么this指向什么
+			fn.call([1,2,3]);
+			fn.call(Date);
+			fn.call(new Date);
+			
+			
+		</script>
+	</body>
+</html>

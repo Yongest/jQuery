@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea id='conso'>请输入任意代码</textarea>
+		<script type="text/javascript">
+			var domTextarea = document.querySelector('#conso');
+			
+			// 点击文本框，就执行用户输入的代码
+			domTextarea.onclick = function() {
+				/**
+				 * 1、先获取文本框的字符串内容
+				 * 2、通过这个内容创建一个函数
+				 * 3、执行这个函数
+				 * */
+				var codeStr = domTextarea.value;
+				eval(codeStr);
+				/*var fn = new Function(codeStr);
+				fn();*/
+			};
+		</script>
+	</body>
+</html>

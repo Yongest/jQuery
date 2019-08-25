@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Object.create:
+			 * 这是一个ES5新增的方法，IE9以及以上才支持。
+			 * 作用：创建一个指定原型的对象。
+			 * 语法：Object.create(原型对象)
+			 * 返回值：返回一个新对象，新对象的原型为你指定的原型。
+			 * 
+			 * 通过该方法可以创建一个没有原型的对象：
+			 * 即传入一个null。
+			 * */
+			
+			var pro = {
+				$: '800$',
+				RMB: '6400'
+			};
+			
+			// 创建一个newObj对象，newObj对象的__proto__为pro。
+			var newObj = Object.create(pro);
+			console.log(newObj.__proto__ == pro);
+			console.log(newObj.$);
+			console.log(newObj.RMB);
+			
+			// 创建一个没有原型的对象
+			var noProtoObj = Object.create(null);
+			console.log(noProtoObj.__proto__);
+			noProtoObj.toString();
+
+		</script>
+	</body>
+</html>

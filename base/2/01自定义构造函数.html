@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			// 创建狗的构造函数，也可以称之为类
+			function Dog(name, age) {
+				// 下面的代码仅仅是Dog构造函数的代码体
+				this.name = name;
+				this.age = age;
+				this.wowo = function() {
+					console.log('旺旺！');
+				}
+			}
+			
+			// 类仅仅相当于是一个模版，要想创建出实例，需要配合new关键字
+			var taidi = new Dog('泰迪', 3);
+			var hashiqi = new Dog('哈士奇', 3);
+			
+			// 泰迪与哈士奇拥有相同的功能
+			taidi.wowo();
+			hashiqi.wowo();
+			
+			// 但是相同功能相等吗：不相等
+			// 因为创建一个对象，构造函数就会执行一次，执行一次就会定义一次新函数
+			console.log(taidi.wowo == hashiqi.wowo);
+			
+			// 有没有什么方式能够让多个实例，共享一些相同的方法或者属性：原型
+		</script>
+	</body>
+</html>

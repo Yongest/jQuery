@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(name) {
+				// 这些给新实例添加属性的代码，通常称之为是实例初始化。
+				this.name = name;
+			}
+			Person.prototype.run = function() {
+				console.log('奔跑');
+			};
+			
+			
+			/**
+			 * 下面这行代码的执行，js解析引擎会做如下4个步骤：
+			 * 1、在内存当中开辟一块区域(这块区域就代表一个实例对象)
+			 * 2、给实例添加一个__proto__属性，默认指向构造函数的prototype
+			 * 3、执行构造函数，同时设定构造函数内的this为创建的新实例
+			 * 4、返回新实例的地址
+			 * */
+			var xiaohai = new Person('小海');
+			var xiaochao = new Person('小超');
+			
+		</script>
+	</body>
+</html>

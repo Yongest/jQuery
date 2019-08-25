@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// js没有块级作用域，只有函数作用域
+			// 因为下面的代码没有函数，所以变量a是全局变量，
+			// 全局变量就是window的属性，所以'a' in window结果为true，最终进去打印1。
+//			if('a' in window) {
+//				var a = 1;
+//				console.log(a);
+//			}
+			
+			
+			/*--------------------------------------------------*/
+			
+			// js采用的词法作用域规定，优先找自己作用域的下变量，找不到去定义该函数的地方找，直到全局。
+//			function fn() {
+//				var a = 100;
+//			}
+//			(function() {
+//				fn();
+//				console.log(a);
+//			})();
+			
+			
+			/*----------------------------------------------------*/
+			
+			// 函数调用一次，就会产生一个新的作用域
+			
+			var count = 0;
+			
+			function fn(a) {
+				var a = 100; 
+				  
+				(function() {
+					// 执行三次，就终止
+					if(count++ >= 1) {
+						return;
+					}
+					fn(200);
+					console.log(a);
+				})();
+			}
+			
+			fn(100);
+		</script>
+	</body>
+</html>

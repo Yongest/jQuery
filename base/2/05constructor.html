@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * constructor: 
+			 * 构造器的意思。
+			 * 它是构造函数prototype对象身上的一个默认属性，
+			 * 该属性的值为构造函数。
+			 * 
+			 * 它的作用：
+			 * 没什么卵用。
+			 * 
+			 * 非要定义一个作用，就是实例可以通过这个属性得知自己的构造函数是谁。
+			 * */
+			
+			function Macbook(color) {
+				this.color = color;
+			}
+			
+			// macbook.__proto__ == Macbook.prototype
+			var macbook = new Macbook('灰色');
+			console.log(macbook.constructor);
+
+		</script>
+	</body>
+</html>

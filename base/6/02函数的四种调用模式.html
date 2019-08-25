@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 函数的四种调用模式：
+			 * 函数中的this，与函数的调用有关，与定义无关。
+			 * 
+			 * 1、函数调用模式 
+			 *    函数名() || (function(){})() ==> windows
+			 * 
+			 * 2、方法调用模式
+			 *    对象.方法名() || 对象[方法名] || 父对象.子对象。方法名 ==》 宿主对象
+			 * 
+			 * 3、构造器调用模式
+			 *    new 构造函数() || new 对象.构造函数() ==》 新创建的实例
+			 * 
+			 * 4、间接调用模式(上下文调用模式)
+			 *    函数.call(this) || 函数.apply(this) ==> 传啥指向啥 
+			 * */
+			
+			function fn() {
+				console.log(this);
+				console.log(11)
+			}
+			var obj = {
+				fn: fn
+			};
+			
+			// 调用方式不同this不同
+			fn();
+			obj.fn();
+			
+			// js还提供了另外一个可以任意指定this指向的功能，这个功能有两个方法都可以实现。
+			fn.call([1,2]);
+			obj.fn.apply(Function);
+		</script>
+	</body>
+</html>

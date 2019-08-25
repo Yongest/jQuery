@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * js中的继承特征就是使用原型来实现的。
+			 * 
+			 * 什么是原型对象：
+			 * 原型对象它是一个对象，这个对象可以供其他对象访问自己的属性与方法。
+			 * 
+			 * 谁有原型对象：
+			 * 在js中，默认情况下，所有的对象都有一个原型对象，可以无条件访问其属性与方法。
+			 * 每一个对象，都有一个__proto__属性记录着这个对象的原型对象为谁。
+			 * 
+			 * 原型的作用(就是继承的作用)：
+			 * 代码复用，节省内存。
+			 * */
+			
+			// 创建一个空对象，默认没有任何属性与方法，
+			// 但是这个对象却有一个原型对象，它里面有很多属性与方法，可以直接拿来使用，
+			// 同时可以通过__proto__属性获取到这个原型对象。
+			var obj = {
+				val: 100
+			};
+			console.log(obj.__proto__); // 查看obj的原型对象，发现具有toString与hasOwnProperty方法。
+			
+			
+			// 测试使用原型对象上的方法
+			console.log(obj.toString());
+			console.log(obj.hasOwnProperty('val'));   // val是自己的，true
+			console.log(obj.hasOwnProperty('hasOwnProperty'));  // hasOwnProperty不是自己的，继承来的，false
+		
+		
+			// 下面又创建了很多类似的对象，她们都可以使用相同的方法，
+			// 但是这些方法来自同一个原型对象，所以不会造成内存的过多浪费。
+			var  obj2 = {};
+			var  obj3 = {};
+			var  obj4 = {};
+			var  obj5 = {};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * try{}catch(e){}
+			 * 现在通常是用来检测浏览器兼容性，还有处理一些潜在的可预知的错误。
+			 * */
+			
+			var obj = {
+				name: '朱武',
+				age: 35
+			};
+			
+			// stringify可以把js对象转换为JSON字符串
+			var objStr = JSON.stringify(obj);
+			console.log(objStr);
+			
+			// parse可以把JSON字符串转换为js对象，但是如果传入的字符串不合格，会报错
+			// 预想到下面的代码可能会发生错误，如果不想因为这个错误导致下面的代码中断执行，可以考虑使用try{}catch
+			try {
+				var obj = JSON.parse('{ name: "朱武" }');
+				console.log(obj);
+			}catch(e){}
+			
+			// 检测浏览器兼容性
+			var arr = [1,2,3];
+			try {
+				arr.forEach(function() {
+					
+				});
+			}catch(e){
+				for(var i = 0, len = arr.length; i < len; i++) {
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

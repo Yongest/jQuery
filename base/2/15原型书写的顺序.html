@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person() {
+				
+			}
+			
+			// p继承Person默认的prototype
+			var p = new Person();
+			
+			// 把Person.prototype覆写为一个新的对象
+			Person.prototype = {
+				constructor: Person,
+				run: function(){
+					console.log('跑');
+				},
+				say: function(){},
+				study: function(){},
+				max_age: 300
+			};
+			
+			// 访问不到，因为p继承的是构造函数默认的prototype。
+			p.run();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person() {
+				
+			}
+			
+			Person.prototype.run = function() {
+				console.log('跑');
+			}
+			
+			var p = new Person();
+			p.run();   // 跑
+			
+			// 修改默认原型上的run方法
+			Person.prototype.run = function() {
+				console.log('疯跑');
+			};
+			p.run();   // 疯跑
+			
+			// 修改构造函数prototype的指向
+			// 这个修改，不会影响p的继承，p仍然继承构造函数默认的prototype
+			Person.prototype = {
+				run: function() {
+					console.log('三步');
+				}
+			}
+			p.run();   // 疯跑
+			
+			// 现在再创建一个对象，该对象就会继承新的原型，新原型的run是三步
+			var p2 = new Person();
+			p2.run();  // 三步
+
+		</script>
+	</body>
+</html>

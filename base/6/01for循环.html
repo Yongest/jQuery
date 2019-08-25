@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 在js中， 传入定时器的回调，事件回调都是异步执行的。
+			 * 异步执行的特点是：需要等待同步代码执行完毕后再执行。
+			 * */
+//			for(var i = 0; i < 3; i++) {
+//				console.log(1);
+//				setTimeout(function(){}, 1000);
+//			}
+			
+			// $.ajax与setTimeout方法调用是同步执行的，但是success回调和传入定时器的回调是异步执行的。
+//			$.ajax({
+//				success: function(){
+//					console.log('回调是异步执行的，需要等待同步执行完毕后执行，同时也需要等待网络请求成功后执行');
+//				}
+//			});
+
+//			var startTime = Date.now();
+//			
+//			setTimeout(function(){
+//				console.log('回调是异步执行的，需要等待同步执行完毕后执行');
+//				console.log((Date.now() - startTime) / 1000);  // 计算定时器执行时的时间
+//			}, 500);
+//			
+//			var total = 0;
+//			for(var i = 0; i < 1000000000; i++) {
+//				total++;
+//			}
+//			console.log(total);
+			
+			/*-------------------------------------------------*/
+			
+			document.onclick = function() {
+				alert('点击了');
+			};
+			
+			var total = 0;
+			for(var i = 0; i < 1000000000 * 2; i++) {
+				total++;
+			}
+			console.log(total);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			function fn() {
+//				console.log(this);
+//			}
+//			var obj = {
+//				fn: fn
+//			};
+//			
+//			// 考题
+//			fn();    // window
+//			obj.fn();  // obj
+			
+			/*-----------------------------------------------*/
+			
+//			var o = {
+//				fn: function() {
+//					console.log(this);
+//				}
+//			};
+//			var fn = o.fn;
+//			
+//			// 考题
+//			o.fn();  // o
+//			fn();    // window
+			
+			/*-----------------------------------------------*/
+			
+//			var obj = {
+//				o: {
+//					fn: function() {
+//						console.log(this);
+//					}
+//				}
+//			};
+//			var fn = obj.o.fn;
+//			
+//			// 考题
+//			obj.o.fn();  // o对象
+//			fn();        // window
+//			new fn();    // fn的实例
+//			new obj.o.fn();  // fn的实例
+			
+			/*-----------------------------------------------*/
+			
+			function Person(name) {
+				this.name = name;
+				this.fn = function() {
+					console.log(this);
+				}
+			}
+			Person.prototype.f = function() {
+				console.log(this);
+			};
+			
+			// 考题
+			var nana = new Person('娜娜');
+			nana.fn();   // 娜娜
+			nana.f();    // 娜娜
+		</script>
+	</body>
+</html>

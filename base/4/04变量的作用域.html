@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 10;
+			(function() {
+				var b = 100;
+				
+				console.log(a); // 10
+				console.log(b); // 100
+			})();
+			
+			console.log(a); // 10
+			console.log(b); // 报错
+		</script>
+	</body>
+</html>

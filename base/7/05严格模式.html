@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * ES5提供了一个严格模式新特性：
+			 * 严格模式可以让js解析引擎以一种新的特征或这方式来运行我们的js代码，
+			 * 它可以强制让我们的js代码书写的更加严谨规范，
+			 * 也可以改变一些原来设计不太合理的api表现，
+			 * 另外如果想使用ES6、ES7的一些特征，必须在该模式下才会生效。
+			 * 
+			 * 严格模式使用方式&分类：
+			 * 
+			 * 1、全局模式
+			 * 在代码的顶端，添加一句话'use strict';
+			 * 采用全局模式后，所有的代码都按照严格模式运行。
+			 * 
+			 * 2、局部模式
+			 * 在函数的顶端，添加一句话'use strict';
+			 * 采用局部模式后，只有该函数内的代码才会按照严格模式运行。
+			 * 
+			 * 
+			 * 严格模式下的一些重要规则或特点：
+			 * 1、声明变量必须使用var
+			 * 2、delete删除全局变量，必须使用window才行，不能直接删
+			 * 3、函数调用模式下this无指向(this值为undefined)
+			 * 4、eval拥有了单独的作用域(可以避免eval中的代码造成全局变量污染)
+			 * 5、call&apply的this处理方式产生了变化，真正实现想指向谁就指向谁
+			 * 6、arguments不在和形参绑定
+			 * 
+			 * 7、禁用arguments.callee 并且禁用函数的caller。
+			 * 8、禁用with语句
+			 * */
+			
+			'use strict';
+			
+//			1、声明变量必须使用var
+//			a = 10;         // 报错，a没有定义过是不能赋值的
+//			console.log(a);   
+
+//			2、delete删除全局变量，必须使用window才行，不能直接删放
+//			delete alert;   // 报错，不能这样删
+//			alert(11);
+
+//			3、函数调用模式下this无指向(this值为undefined)
+//			(function() {
+//				console.log(this);   // undefiend
+//			})();
+
+//			4、eval拥有了单独的作用域(可以避免eval中的代码造成全局变量污染)
+//			eval('var a = 10; console.log(a * a)');  
+//			console.log(a);          // 报错，以为eval有了单独作用域，不会污染全局变量
+
+//			5、call&apply的this处理方式产生了变化，真正实现想指向谁就指向谁
+//			function fn() {
+//				console.log(this)
+//			}
+//			
+//			fn.call();
+//			fn.call(null);
+//			fn.call(undefined);
+//			fn.call(123);
+//			fn.call('abc');
+//			fn.call(true);
+
+
+//			6、arguments不在和形参绑定
+//			function add(a, b) {
+//				a *= a;
+//				b *= b;
+//				console.log(arguments[0] + arguments[1]);  // 普通模式下打印2600，严格模式正常打印60
+//			}
+//			add(10, 50);
+
+//			7、禁用arguments.callee 并且禁用函数的caller。
+//			(function fn() {
+//				console.log(fn.caller);   // 报错，不能使用
+//				console.log(arguments.callee);  // 报错，不能使用
+//			})();
+			
+//			8、禁用with语句
+//			var obj = {
+//				name: '薄荷糖',
+//				age: 10
+//			}; 
+//			with(obj) {               // 语法错误，不能使用with语句
+//				console.log(name);
+//				console.log(age);
+//			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			/**
+			 * 在js中，函数比较特殊，它也是一种对象。
+			 * 该对象有如下几个默认的属性：
+			 * 1、prototype -- 通过new该函数创建的实例，继承这个属性所指向的对象
+			 * 2、__proto__ -- 记录该函数自己的继承对象(所有的函数都继承Function.prototype)
+			 * 3、name 函数的名字
+			 * 4、length 代表形参的个数
+			 * 5、caller 呼叫者的含义，获取调用该函数的函数，如果没有则为null
+			 * 6、arguments 一个存储所有实参的对象，可以通过下标依次获取实参，通过length获取实参的个数
+			 * 
+			 * 
+			 * arguments对象的属性：
+			 * 下标：按照顺序存储实参
+			 * length: 实参的个数
+			 * callee: 返回arguments所在的函数自身
+			 * __proto__: 继承的对象
+			 * 
+			 * */
+//			function fn() {
+//				
+//			}
+//			
+//			var f = function(a, b, c){};
+			
+			/*--------------------------------------*/
+			
+//			function f1() {
+//				console.log(f1.caller);
+//			}
+//			
+//			function f2() {
+//				console.log(f2.caller);
+//				f1();
+//			}
+//			
+//			f2();
+			
+			/*-----------------------------------------*/
+			
+			(function foo() {
+				console.log(arguments);
+			})(1,2,4,4);
+			
+			
+			// 递归，函数直接或者间接调用自己。
+			function fn() {
+				fn();
+			};
+			
+			// 如果一个函数没有名字，可以通过arguments.callee获取这个函数，然后递归调用自己。
+			(function() {}
+				arguments.callee();
+			)();
+		</script>
+	</body>
+</html>

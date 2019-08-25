@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Object.prototype.toString:
+			 * 作用：根据方法的调用者来返回其描述了该调用者类型的字符串。
+			 * 语法：对象.toString()
+			 * 返回值：字符串，描述了对象的具体类型。
+			 * 但是只对js内置有效，用户自定义的对象统一返回具体的值'[object Object]'。
+			 * 
+			 * */
+			
+			var obj = {};
+			console.log(obj.toString());
+			
+			var arr = [1,2];
+			// 我们这里要通过Object.prototype上面的toString来获取arr的具体类型，
+			// 但是arr先继承Array.prototype，这里面也有一个toString，
+			// 所以ar.toString直接调用，找到的不是Object.prototype上的toString
+			console.log(arr.toString());  
+			
+			// 最简单理解的方式，就是把Object.prototype.toString直接加到arr自身
+			arr.toString = Object.prototype.toString;
+			console.log(arr.toString());  
+			delete arr.toString;
+			
+			// 最少代码的方式
+			console.log(Object.prototype.toString.call(arr));
+			console.log(({}).toString.call(arr));
+			console.log(({}).toString.call(Date));
+			console.log(({}).toString.call(Function));
+			console.log(({}).toString.call(new Function));
+			console.log(({}).toString.call(new Date));
+			console.log(({}).toString.call(Math)); // Math比较特殊，不是构造函数，不能new实例
+			console.log(({}).toString.call(JSON)); // JSON比较特殊，不是构造函数，不能new实例
+			console.log(({}).toString.call(document));
+			console.log(({}).toString.call(document.head));
+		</script>
+	</body>
+</html>

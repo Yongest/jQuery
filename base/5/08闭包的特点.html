@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn() {
+				var a = 0;
+				return function() {
+					console.log(++a);
+				}
+			}
+			
+			// f是闭包，因为引用了非自身的局部变量a，做成这个a一直无法被回收。
+			// 正常情况下，fn执行完毕，a就被会回收，但实际并没有，也就是说a的生命周期被拉长了。
+			var f = fn();
+			f();
+			f();
+			
+			// 因为f闭包引用了a，所以a的生命周期就和f闭包进行了绑定，
+			// 如果有一天f被释放掉了，那么a也会跟着释放。
+			f = null;
+			
+		</script>
+	</body>
+</html>

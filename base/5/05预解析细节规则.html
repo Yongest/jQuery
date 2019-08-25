@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 变量声明重名 -- 后面的变量声明忽略，没有必要开辟两次内存
+			
+//			console.log(a);
+//			var a = 1;
+//			console.log(a);
+//			var a = 10;
+//			console.log(a);
+			
+			
+			/**
+			 * 预解析：
+			 * var a;
+			 * 
+			 * 逐行执行：
+			 * console.log(a); undefined
+			 * a = 1;
+			 * console.log(a); 1
+			 * a = 10;
+			 * console.log(a); 10
+			 * */
+			
+			// 函数声明重名 -- 后面的声明覆盖前面的
+			
+//			console.log(fn); // 第二次fn
+//			function fn() {
+//				console.log('第一次声明');
+//			}
+//			console.log(fn); // 第二次fn
+//			function fn() {
+//				console.log('第二次声明');
+//			}
+//			console.log(fn); // 第二次fn
+			
+			/**
+			 * 预解析：
+			 * fn第一次声明
+			 * fn第二次声明，覆盖掉第一次声明;
+			 * 
+			 * 逐行执行：
+			 * console.log(fn); // 第二次fn
+			 * console.log(fn); // 第二次fn
+			 * console.log(fn); // 第二次fn
+			 * */
+			
+			// 变量和函数重名 -- 保留函数
+			
+			// 该题的特点，第一次打印的结果为预解析后的结束，
+			// 以后打印的结果为赋的值，因为打印和赋值是逐行执行的。
+			
+			console.log(xo);    // 第二瓶人头马函数
+			var xo = '一瓶人头马多少钱';
+			console.log(xo);    // 一瓶人头马多少钱
+			function xo() {     
+				console.log('第一瓶人头马');
+			}
+			console.log(xo);    // 一瓶人头马多少钱
+			var xo = '有没有国产茅台贵';
+			console.log(xo);    // 有没有国产茅台贵
+			function xo() {
+				console.log('第二瓶人头马');
+			}
+			console.log(xo);    // 有没有国产茅台贵
+			var xo = '差不多吧，都是奢侈品';
+			console.log(xo);    // 差不多吧，都是奢侈品
+			
+			/**
+			 * 预解析：
+			 * var xo;
+			 * xo第一次声明， 保留函数;
+			 * var xo，忽略；
+			 * xo第二次声明，覆盖第一次声明；
+			 * var xo，忽略。
+			 * 
+			 * // 预解析之后，留下来的xo为第二瓶人头马函数。
+			 * 
+			 * 逐行执行：
+			 * console.log(xo); // 第二瓶人头马函数
+			 * xo = '一瓶人头马多少钱'; 
+			 * console.log(xo); // 一瓶人头马多少钱
+			 * console.log(xo); // 一瓶人头马多少钱
+			 * xo = '有没有国产茅台贵';
+			 * console.log(xo); // 有没有国产茅台贵
+			 * console.log(xo); // 有没有国产茅台贵
+			 * xo = '差不多吧，都是奢侈品';
+			 * console.log(xo); // 差不多吧，都是奢侈品
+			 * */
+			
+		</script>
+	</body>
+</html>

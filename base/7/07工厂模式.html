@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(name) {
+				this.name = name;
+			}
+
+			// 正常情况下创建实例，需要手动new，那么不new可以创建实例吗？
+			// 本质上是不可以的，但是我们可以把new的过程进行封装。
+			var p = new Person('造小人');
+			
+			// 这就是工厂函数，调用我就会得到一个实例
+			function getPerson(name) {
+				return new Person(name);
+			}
+			var p2 = getPerson('造小人');
+		</script>
+	</body>
+</html>

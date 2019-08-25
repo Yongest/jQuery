@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * delete(运算符):
+			 * 作用：删除对象的属性
+			 * 语法：delete 对象.属性名  || delete 对象[属性名]
+			 * */
+			
+			var v = 'sex';
+			var obj = {
+				name: '露姐',
+				age: 28,
+				sex: '女',
+				v: '男'
+			};
+			delete obj.age;
+			delete obj['name'];
+			delete obj[v];
+			
+			console.log(obj);
+		</script>
+	</body>
+</html>

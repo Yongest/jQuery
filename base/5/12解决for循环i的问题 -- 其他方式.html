@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = ['第一句话', '第二句话', '第三句话'];
+			
+			// 解决值的问题
+		var index = 0;
+		for(var i = 0, len = arr.length; i < len; i++) {
+			setTimeout(function() {
+					console.log(arr[index++]);
+					console.log(i)
+			}, 1000 * (i + 1));
+			
+		}
+			
+
+			
+		</script>
+	</body>
+</html>

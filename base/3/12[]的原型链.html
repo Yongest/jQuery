@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// arr ==> Array.prototype ==> Object.prototype ==> null
+			var arr = [];
+			
+			console.log(arr.__proto__);
+			console.log(arr.__proto__.constructor);
+			
+			console.log(arr.__proto__.__proto__);
+			console.log(arr.__proto__.__proto__.constructor);
+			
+			/*--------------------------------------*/
+			
+			// a ==> Array.prototype ==> Object.prototype ==> null
+			var a = new Array();
+		</script>
+	</body>
+</html>

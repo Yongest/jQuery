@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {};
+			
+			// 给obj对象以下标的方式存储值，同时添加一个length属性代表值的数量
+			obj[0] = '我的梦想是长大';
+			obj[1] = '可惜那是我小时候的梦想';
+			obj[2] = '现在我的梦想是回到妈妈的怀抱';
+			obj.length = 3;
+			
+			// 上面那样写，太费事，自己还要记录length长度，随时修改，很繁琐，可以考虑使用方法借用来完成
+			[].push.call(obj, 'push方法能不嫩把我嫁给obj呢');
+			[].shift.call(obj); 
+			
+			console.log(obj);
+		</script>
+	</body>
+</html>

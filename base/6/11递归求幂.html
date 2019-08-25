@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 求2的5次幂 ==> 2 * 2 * 2 * 2 * 2 ==> 32
+			 * 2^0 = 1
+			 * 2^1 = 2
+			 * 2^2 = 4
+			 * 2^3 = 8
+			 * 2^4 = 16
+			 * 2^5 = 32
+			 * */
+			
+//			function power2_0() {
+//				return 1;
+//			}
+//			
+//			function power2_1() {
+//				return power2_0() * 2;
+//			}
+//			
+//			function power2_2() {
+//				return power2_1() * 2;
+//			}
+//			
+//			function power2_3() {
+//				return power2_2() * 2;
+//			}
+//			
+//			function power2_4() {
+//				return power2_3() * 2;
+//			}
+//			
+//			function power2_5() {
+//				return power2_4() * 2;
+//			}
+			
+			/*-----------------------合并上面代码-------------------------*/
+			
+//			function power2(n) {
+//				if(n == 0) {
+//					return 1;
+//				}else if(n == 1) {
+//					return power2(0) * 2;
+//				}else if(n == 2) {
+//					return power2(1) * 2;
+//				}else if(n == 3) {
+//					return power2(2) * 2;
+//				}else if(n == 4) {
+//					return power2(3) * 2;
+//				}else if(n == 5) {
+//					return power2(4) * 2;
+//				}
+//			}
+			
+			/*-----------------------优化上面代码-------------------------*/
+			
+			function power2(n) {
+				if(n == 0) {
+					return 1;
+				}else{
+					return power2(n - 1) * 2;
+				}
+			}
+			
+			console.log(power2(10));
+			
+			
+		</script>
+	</body>
+</html>

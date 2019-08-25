@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 原型：
+			 * 原型是一个对象，可以供其他对象访问其属性与方法。
+			 * 
+			 * 谁有原型：
+			 * 在js中，默认所有的对象都有原型。
+			 * 
+			 * 如何访问一个对象的原型：
+			 * 通过__proto__属性即可得到。
+			 * 
+			 * 反向思考：
+			 * 既然可以通过__proto__属性访问一个对象的原型，
+			 * 那么是不是可以通过修改这个属性，来修改对的原型呢？
+			 * */
+			
+//			var obj = {};
+//			console.log(obj.length);
+//			
+//			// 经过测试，确实可以通过__proto__来修改对象的原型。
+//			obj.__proto__ = [1, 2 ,3];
+//			console.log(obj.length);
+//			
+			
+			/*------------------------------------------------------------------------*/
+			
+			// 先创建好一个原型，里面存放一个wowo方法
+			var proto = {
+				wowo: function() {
+					console.log('旺旺！');
+				}
+			};
+			
+			// 创建狗的构造函数，也可以称之为类
+			function Dog(name, age) {
+				this.name = name;
+				this.age = age;
+				/*this.wowo = function() {
+					console.log('旺旺！');
+				}*/
+				this.__proto__ = proto;
+			}
+			
+			// 类仅仅相当于是一个模版，要想创建出实例，需要配合new关键字
+			var taidi = new Dog('泰迪', 3);
+			var hashiqi = new Dog('哈士奇', 3);
+			
+			taidi.wowo();
+			hashiqi.wowo();
+			
+			// 相等，使用的是同一个原型对象上的wowo方法
+			console.log(taidi.wowo == hashiqi.wowo);
+		</script>
+	</body>
+</html>

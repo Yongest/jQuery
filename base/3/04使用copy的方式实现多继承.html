@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// copy方法
+			function copy() {
+				/*
+				 * 1、先使用一个变量存储第一个对象
+				 * 2、从下标1开始遍历arguments得到后面的所有对象
+				 * 3、再遍历每一个后面对象的属性，依次copy给第一个对象
+				 * 4、return第一个对象
+				 * */
+				var target = arguments[0];
+				
+				for(var i = 1, len = arguments.length; i < len; i++) {
+					for(var key in arguments[i]) {
+						target[key] = arguments[i][key];
+					}
+				}
+				
+				return target;
+			}
+			
+			/*------------------------------------------------------------*/
+			
+			function ShengWu() {}
+			ShengWu.prototype.shengWu = function() {
+				console.log('可以新陈代谢');
+			};
+			
+			function DongWu() {}
+			DongWu.prototype.dongWu = function() {
+				console.log('可以自主行动');
+			};
+			
+			function ReXueDongWu() {}
+			ReXueDongWu.prototype.reXueDongWu = function() {
+				console.log('激情澎湃');
+			};
+			
+			// 人可以使用上诉3个类的方法
+			function Ren() {}
+			copy(Ren.prototype, ShengWu.prototype, DongWu.prototype, ReXueDongWu.prototype);
+			Ren.prototype.ren = function() {
+				console.log('主宰其它生物');
+			};
+			
+			// 测试
+			var r = new Ren();
+			r.ren();
+			r.reXueDongWu();
+			r.dongWu();
+			r.shengWu();
+		</script>
+	</body>
+</html>

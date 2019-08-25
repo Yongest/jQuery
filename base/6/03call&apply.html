@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * call、apply
+			 * 这是来自于Function.prototype中的两个方法，所有的函数都可以调用。
+			 * 它们俩有一个共同的作用，可以自由指定函数执行时内部 this指向。
+			 * 
+			 * call:
+			 * 语法：函数.call(指定this, 实参1, 实参2...)
+			 * 作用：函数调用call，最终相当于调用自己，但是自己内的this被改变了，传给call啥，this就为啥。
+			 *     同时call方法后面的参数都为函数执行时需要的实参。
+			 * 
+			 * apply:
+			 * 语法：函数.apply(指定this, [实参1, 实参2...])
+			 * 作用：函数调用apply，最终相当于调用自己，但是自己内的this被改变了，传给apply啥，this就为啥。
+			 *     同时apply方法的第二个参数要求为数组或伪数组，apply会把数组拆开取出里面的值依次作为函数执行时需要的实参。
+			 * 作用2： 可以把数组或者伪数组拆开传递给函数。
+			 * * */
+			
+			/*--------------------call和apply改变函数this的作用------------------*/
+			
+			// 打印this中指定的属性值
+//			function fn(propertyName) {
+//				console.log(this[propertyName]);
+//			}
+//			
+//			fn('alert');
+//			fn.call(['nb', 'znb', 'lnb'], 'length');
+//			fn.apply(['nb', 'znb', 'lnb'], ['length']);
+			
+			/*--------------------apply的作用2------------------*/
+			
+			// 求任意多数据的最大值
+//			function max() {
+//				var maxNumber = 0;
+//				for(var i = 0, len = arguments.length; i < len; i++) {
+//					if(maxNumber < arguments[i]) {
+//						maxNumber =  arguments[i];
+//					}
+//				}
+//				console.log(maxNumber);
+//			}
+//			max(1, 50, 20, 10);
+
+			/*--------------------apply的作用2------------------*/
+			
+			// 优化，使用内置的max
+			function max() {
+				// 利用apply方法把arguments里的值拆开依次传递给max方法
+				console.log(Math.max.apply(null, arguments));
+			}
+			max(1, 50, 20, 10);
+		</script>
+	</body>
+</html>

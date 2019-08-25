@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 存在Person类与Animal类
+			// Person类按照常理来说也是一种动物，
+			// 所以Animal提供的一些属性与方法，Person也应该提供。
+			
+			function Animal(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			Animal.prototype = {
+				eat: function() {
+					console.log('动物改不了吃');
+				},
+				run: function() {
+					console.log('不能动的不叫动物');
+				}
+			};
+			
+			function Person(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			// 解决方案2，修改Person.prototype为一个继承Animal.prototype的对象
+			Person.prototype = Object.create(Animal.prototype);
+			Person.prototype.study = function() {
+				console.log('人类独有的学习方法');
+			};
+			
+			// 有没有什么办法，能给让Person实例使用Animal原型上的方法
+			// long的继承关系 ==> Person.prototype(Object.create返回值) ==> Animal.prototype
+			var long = new Person('龙', 45, '男');
+			var feng = new Person('凤', 30, '女');
+			long.eat();
+			long.run();
+			
+			var shulan = new Animal('树懒', 3, '公');
+			shulan.study();
+		</script>
+	</body>
+</html>

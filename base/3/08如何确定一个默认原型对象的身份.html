@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Animal(name, age, color) {
+				this.name = name;
+				this.age = age;
+				this.color = color;
+			}
+			Animal.prototype.eat = function() {
+				console.log('谁不爱吃呢?');
+			};
+			
+			// 松鼠实例
+			var songshu = new Animal('松鼠', 2, '灰色');
+			console.log(songshu.__proto__);
+			
+			// 通过访问对象原型的constructor，可以获知这个原型的身份
+			console.log(songshu.__proto__.constructor);
+		</script>
+	</body>
+</html>

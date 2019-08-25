@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * ES5给函数新增了一个bind方法，
+			 * 该方法的作用与call、apply类似，
+			 * 都可以改变一个函数运行时内部的this指向。
+			 * 
+			 * 语法：函数.bind(this); 
+			 * 返回值：返回一个绑定了this的函数。
+			 * 
+			 * 该方法与call、apply的区别：
+			 * 函数.call(this) || 函数.apply(this) ==> 这两方法会让函数马上执行，改变其this。
+			 * 函数.bind(this) ==> bind方法不会让函数执行，而是返回一个函数，在你需要的时候再执行。
+			 * */
+			
+			function fn() {
+				console.log(this);
+			}
+			fn.call([1,2,3]);
+
+			var fnClone = fn.bind({name:'媛姐'});
+			fnClone();
+			fnClone();
+			fnClone();
+			fnClone();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+//			document.onclick = function() {
+//				console.log(this);   // document 
+//			};
+			
+			/*--------------------------------------------*/
+			
+//			function fn() {
+//				console.log(this);  // document 
+//			}
+//			document.onclick = fn;
+			
+			/*--------------------------------------------*/
+			
+			// 现在要求fn里面的this不能是document,解决方案就是不要把该方法直接绑定
+//			function fn() {
+//				console.log(this);  // window
+//			}
+//			document.onclick = function() {
+//				console.log(this);  // document 
+//				fn();
+//			};
+			
+			/*--------------------------------------------*/
+			
+			// 现在要求fn里面的this不能是window，而是数组
+//			var arr = [1,2,3];
+//			function fn() {
+//				console.log(this);  // arr
+//			}
+//			document.onclick = function() {
+//				console.log(this);  // document 
+//				fn.call(arr);
+//			};
+			
+			/*--------------------------------------------*/
+			
+			// 现在要求fn里面的this不能是window，而是数组
+//			var arr = [1,2,3];
+//			function fn() {
+//				console.log(this);  // arr
+//			}
+//			document.onclick = function() {
+//				console.log(this);  // document 
+//				arr.fn = fn;
+//				arr.fn();
+//			};
+			
+			/*--------------------------------------------*/
+			
+			// 现在要求fn里面的this不能是window，而是数组
+			var arr = [1,2,3];
+			function fn() {
+				console.log(this);  // arr
+			}
+			document.onclick = fn.bind(arr);  // 使用bind得到一个固定this为arr的函数。
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			function fn(a) {
+//				fn(200);   // 每次到这里，就递归调用自己，一直无法打印
+//				console.log(a);
+//			}
+//			
+//			fn(100);
+			
+			/*-----------------------------*/
+			
+//			var count = 0;
+//			function fn(a) {
+//				// 执行三次，就终止
+//				if(count++ >= 1) {
+//					return;
+//				}
+//				fn(200);  // 到这里，递归调用自己一次就结束了
+//				console.log(a);  // 递归调用结束，这句话就可以执行了，访问a，找到当初传入的100
+//			}
+//			
+//			fn(100);
+			
+			/*-----------------------------*/
+			
+			// 打印两次200，一次100
+			var count = 0;
+			function fn(a) {
+				// 执行三次，就终止
+				if(count++ >= 3) {
+					return;
+				}
+				fn(200);  // 到这里，递归调用自己3次
+				console.log(a); // 3次递归结束后，倒着依次打印，为200，200， 100
+			}
+			
+			fn(100);
+		</script>
+	</body>
+</html>

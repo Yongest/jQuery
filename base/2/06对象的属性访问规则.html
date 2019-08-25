@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 对象的属性访问规则
+			 * 1、如果对象自己与原型都拥有某个属性，优先访问自己的
+			 * 2、原型对象也有自己的原型，那么是否使用呢
+			 * 
+			 * 小结：
+			 * 访问一个对象的属性，先从自身查找，自身没有就去原型查找，
+			 * 原型没有就去原型的原型去找，直到终点，终点也没有返回undefined。
+			 * */
+			
+			var obj = {
+				name: 'hh',
+				age: 16
+			};
+			
+			// obj默认就有原型，下面的代码强制修改了obj默认的原型
+			// 但是修改的新原型本身，也是一个对象，那它应该默认也有一个原型
+			
+			// obj可以访问其原型的东西，其原型有自己的原型，可以访问自己原型的东西，
+			// 那么我们思考obj能不能访问原型的原型的东西。
+			obj.__proto__ = {
+				name: 'ff',
+				sex: '女'
+			};
+			
+			// 修改原型的原型
+			obj.__proto__.__proto__ = {
+				$: '800$'
+			};
+			
+			console.log(obj.name);
+			console.log(obj.age);
+			console.log(obj.sex);
+			console.log(obj.$);
+			console.log(obj.abc);
+		</script>
+	</body>
+</html>

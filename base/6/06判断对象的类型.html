@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 如何获取对象的类型：
+			 * */
+			
+			var arr = [];
+			
+			console.log(typeof arr);  // 不能确定是不是数组对象
+			console.log(arr instanceof Array);  // 如果为true，基本上确定这是一个数组
+			console.log(arr.constructor);  // 为啥，就是啥类型
+			
+			 // 可以获取对象的具体类型，但是只能获取js内置对象的类型
+			console.log(Object.prototype.toString.call(arr)) 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			
+			Person.prototype.$ = '$$$$';
+			
+			// 有两种获取对象原型的方式，不会获取对象的原型，在开发中，几乎没有应用场景
+			var p = new Person();
+			console.log(p.__proto__);
+			console.log(p.constructor.prototype);
+		</script>
+	</body>
+</html>

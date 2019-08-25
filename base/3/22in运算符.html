@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * hasOwnProperty(方法):
+			 * 作用：判断一个属性是不是对象自己的(排除继承的属性)
+			 * 语法：对象.hasOwnProperty(属性名称)
+			 * 
+			 * in(运算符):
+			 * 作用：判断一个对象能否使用某个属性(包含继承的属性)
+			 * 语法：属性名 in 对象
+			 * */
+			
+			var obj = {
+				name: '发哥',
+				age: 48
+			};
+			console.log(obj.hasOwnProperty('name'));
+			console.log(obj.hasOwnProperty('toString'));
+			
+			/*----------------------------------------*/
+			
+			console.log('name' in obj);
+			console.log('toString' in obj);
+		</script>
+	</body>
+</html>

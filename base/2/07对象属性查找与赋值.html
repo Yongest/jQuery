@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				name: 'hh',
+				age: 16,
+				o: {
+					$: '800$'
+				}
+			};
+			
+			console.log(obj.name)
+			console.log(obj.o)
+			
+			obj.name = 'ff';
+			obj.age = 13;
+			
+			// 这是给o对象的val属性赋值
+			obj.o.val = 100;
+			// 这是给obj对象的o属性赋值
+			obj.o = {};
+			
+			// 问结果
+			console.log(obj.o.val);
+		</script>
+	</body>
+</html>

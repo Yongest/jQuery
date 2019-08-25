@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function getCounter() {
+				var total = 0;
+				return {
+					add: function() {
+						++total;
+					},
+					get: function() {
+						return total;
+					}
+				};
+			}
+			
+			var counterObj = getCounter();
+			counterObj.add();
+			counterObj.add();
+			counterObj.add();
+			counterObj.add();
+			console.log(counterObj.get());
+			
+
+		</script>
+	</body>
+</html>

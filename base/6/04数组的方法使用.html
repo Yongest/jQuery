@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4];
+			var arr2 = [1,2,3,4];
+			arr.push('我有一个梦想');   // push执行时，内部的this为arr
+			arr.push('你也有一个梦想');  // push执行时，内部的this为arr
+			
+			// 给所有的数组实现一个循环打印所有值的方法
+			// 所有的数组都能够使用的方法，最好放在它们都继承的Array.prototype上
+			Array.prototype.conso = function() {
+				// 这里要打印数组的所有值，就要先获取到调用该方法的数组，
+				// 谁调用this指向谁，所以这里的this就为当前调用该方法的那个数组
+				for(var i = 0, len = this.length; i < len; i++) {
+					console.log(this[i]);
+				}
+			};
+			
+			arr.conso();
+			arr2.conso();
+			
+			/*-------------------------------------------------*/
+			
+			// 打印所有传递进来的值
+			function fn() {
+//				arguments.conso();  // 报错，因为arguments不是真数组，所以无法调用数组的哪些方法。
+
+				// 打印arguments值，需要遍历arguments，数组中有个conso方法可以遍历this的值
+				// 那我就通过call改变conso方法的this为arguments，这样就让conso循环打印arguments。
+//				Array.prototype.conso.call(arguments);
+				[].conso.apply(arguments);
+			}
+			
+			fn('a', 'b', 'bbj', 'dgd', 'lhdh');
+		</script>
+	</body>
+</html>

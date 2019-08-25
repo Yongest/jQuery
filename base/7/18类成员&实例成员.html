@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 类成员 (静态成员)：
+			 * 添加到类身上的属性或方法，称为类成员。
+			 * 
+			 * 实例成员：
+			 * 添加到实例身上的属性或方法，and供实例使用的属性与方法，称为实例成员。
+			 * 
+			 * */
+			
+			/*
+			 * 构造函数  ==> 类
+			 * */
+			function Person(name, age, sex) {
+				
+				// 这里给this添加的属性，是每个实例独有的
+				// 这些属性直接添加在了实例身上，所以是实例成员
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			// 这是用来描述类的属性
+			// 这些属性直接添加在了类身上，所以是类成员
+			Person.count = '70Y';
+			Person.race = ['黄种人', '黑种人', '白种人'];
+		
+			// 这些方法是实例使用的，所以是实例成语
+			Person.prototype = {
+				run: function() {
+					console.log('所有实例共享的方法');
+				},
+				eat: function() {
+					console.log('所有实例共享的方法');
+				}
+			};
+		</script>
+	</body>
+</html>

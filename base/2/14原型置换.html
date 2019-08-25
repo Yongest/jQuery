@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person() {
+				
+			}
+			
+			// 把Person.prototype覆写为一个新的对象
+			Person.prototype = {
+				constructor: Person,
+				run: function(){},
+				say: function(){},
+				study: function(){},
+				max_age: 300
+			};
+			
+			// 继承方式2：
+			// p继承Person覆写后的prototype对象。
+			var p = new Person();
+			console.log(p.constructor);
+		</script>
+	</body>
+</html>

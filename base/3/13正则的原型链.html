@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// reg ==> RegExp.prototype ==> Object.prototype ==> null
+			var reg = /abc/;
+		
+			console.log(reg.__proto__.constructor);
+			console.log(reg.__proto__.__proto__.constructor);
+		</script>
+	</body>
+</html>

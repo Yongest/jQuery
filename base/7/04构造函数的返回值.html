@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 如果new 构造函数的返回值特点：
+			 * 构造函数里面return了基本数据类型或者不return，都会得到构造函数的实例对象，
+			 * 但是return了复杂数据类型，那么得到的就是return的值，就覆盖实例对象。
+			 * */
+			
+//			function Person(name) {
+//				this.name = name;
+//			}
+//			var p = new Person('金嗓子喉宝');
+//			
+//			// p是Person实例
+//			console.log(p);
+//			console.log(p instanceof Person);
+			
+			/*---------------------------------------*/
+			
+//			function Person(name) {
+//				this.name = name;
+//				return 123456;
+//			}
+//			var p = new Person('西瓜霜含片');
+//			
+//			// p是Person实例
+//			console.log(p);
+//			console.log(p instanceof Person);
+			
+			/*---------------------------------------*/
+			
+//			function Person(name) {
+//				this.name = name;
+//				return JSON;
+//			}
+//			var p = new Person('西瓜霜含片');
+//			
+//			// p是Person实例
+//			console.log(p);
+//			console.log(p instanceof Person);
+			
+			/*---------------------------------------*/
+			
+			function MyArr() {
+				var arr = [];
+				arr.myForEach = function() {
+					console.log('你想干嘛，走开！');
+				};
+				return arr;
+			}
+			var arr = new MyArr();
+			
+			// arr不光可以使用正常数组的方法，还可以使用MyArr提供的独特方法
+			arr.myForEach();
+			console.log(arr.length);
+		</script>
+	</body>
+</html>

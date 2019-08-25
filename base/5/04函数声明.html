@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// 在函数定义的前面使用他们，能够打印出函数体的就是函数声明。
+			console.log(fn);  // 打印函数体，属于函数声明
+			console.log(fn2);  // undefined，不是函数声明
+//			console.log(fn3);  // 报错，不是函数声明
+//			console.log(fn4);  // 报错，不是函数声明
+			console.log(fn5);  // undefined，不是函数声明
+			
+			/*-------------------------------------------------*/
+			
+			function fn() {} // 是函数声明
+			
+			var fn2 = function() {}; // 不是函数声明
+			
+			(function fn3() {})(); // 不是函数声明
+			
+			console.log(function fn4(){});  // 不是函数声明
+			
+			var fn5 = true? function fn5(){}: null;  // 不是函数声明
+			
+			// 局部也存在函数声明
+			(function() { 
+				console.log(neiBuHanShuShengMing);  // 函数体，是函数声明
+				function neiBuHanShuShengMing(){} 
+			})();
+			
+			console.log(yuJuHanShu);   // undefined，所以不是函数声明
+			if(true) {
+				function yuJuHanShu(){}
+			}
+			
+			(function(){})();   // 不是函数声明，可以没有名字
+		</script>
+	</body>
+</html>

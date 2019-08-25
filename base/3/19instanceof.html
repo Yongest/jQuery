@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * instanceof
+			 * 本意：是某某某的实例么
+			 * 作用：判断一个对象的原型链中，是否存在某构造函数的prototype
+			 * 语法：对象 instanceof 构造函数
+			 * 返回值：boolean
+			 * */
+			
+			function Dog(){}
+			// jiaomao ==> Dog.prototype ==> Object.prototype ==> null
+			var jinmao = new Dog(); 
+			
+//			console.log(jinmao instanceof Dog);  // true
+//			console.log(jinmao instanceof Function); // false
+//			console.log(jinmao instanceof Object); // true
+
+			// new Dog ==> Dog.prototype ==> Object.prototype ==> null
+			console.log(new Dog instanceof Dog); // ture
+			
+			// Dog ==> Function.prototype ==> Object.prototype ==> null
+			console.log(Dog instanceof Dog); // false
+			console.log(Dog instanceof Function); // true
+			console.log(Dog instanceof Object); // true
+
+		</script>
+	</body>
+</html>

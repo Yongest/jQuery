@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 错误抛出与错误捕获在js中的使用频率很低，很多情况下不使用也可以，使用也无妨。
+			 * 
+			 * 
+			 * 错误抛出：
+			 * 语法：throw 错误对象或者描述。
+			 * 错误抛出可以认为是矛。
+			 * 这就是一个自定义的错误。
+			 * 
+			 * 
+			 * 错误捕获：
+			 * 语法：try{ 里面包含可能发生错误的代码 }catch(e) { 错误发生时的处理 }
+			 * 错误捕获可以认为是盾。
+			 * */
+			
+			// 报错，是js解析引擎自动抛出的。
+//			console.log(a);
+			
+			function add(a, b) {
+				if(arguments.length < 2) {
+					//throw 'add方法需要两个参数！！！';
+					throw new Error('add方法需要两个参数！！！');
+				}
+				return a + b;
+			}
+			
+			try {
+				console.log(add());
+			}catch(e) {
+				console.log('计算错误');
+			}
+			
+			console.log(add(10, 20));
+		</script>
+	</body>
+</html>

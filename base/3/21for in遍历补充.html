@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * for in 
+			 * 可以即遍历一个对象自身的属性，也可以遍历继承来的属性；
+			 * 但是不能遍历内置的属性。
+			 * */
+			
+			var obj = {
+				name: '杰哥',
+				age: 35
+			};
+			Object.prototype.source = '广州6';
+			console.log(Object.prototype.source);
+			console.log(Object.prototype.hasOwnProperty);
+			
+			// obj继承Object.prototype，所以可以打印source属性，
+			// 但是hasOwnProperty是内置的，所以不能打印
+			for(var key in obj) {
+				console.log(key);
+			}
+		</script>
+	</body>
+</html>

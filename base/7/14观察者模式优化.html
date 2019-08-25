@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 观察者模式：
+			 * 
+			 * 需求，实现如下功能：
+			 * 
+			 * 有一个狗对象，还有两个人对象，一个是狗的主人，一个是要小偷，
+			 * 狗可以叫，主人可以睡觉和惊醒，小偷可以偷东西和逃跑。
+			 * 
+			 * 然后主人开始睡觉，小偷就去偷东西，狗发现了，就叫，主人就被惊醒了，小偷就逃跑了。
+			 * 这里面有一个事件，就是狗叫了，然后主人和小偷各自做了相应的处理。
+			 * */
+			
+			/**
+			 * 普通人
+			 * */
+			function Person(name) {
+				this.name = name;
+			}
+			Person.prototype = {
+				// 睡觉
+				sleep: function() {
+					console.log('睡香香!');
+				},
+				// 惊醒
+				wake: function() {
+					console.log('吓死我了!');
+				}
+			}
+
+			/**
+			 * 小偷
+			 * */
+			function Thief(name) {
+				this.name = name;
+			}
+			Thief.prototype = {
+				// 偷东西
+				steal: function() {
+					console.log('偷香香');
+				},
+				// 逃跑
+				away: function() {
+					console.log('逃跑');
+				}
+			};
+			
+			/**
+			 * 狗
+			 * */
+			function Dog(name) {
+				this.name = name;
+				
+				// 这个属性用来存储将来狗叫时，要执行的所有回调
+				this.eventCallback = {};
+			}
+			Dog.prototype = {
+				
+				// 狗叫，执行所有回调
+				wow: function() {
+					console.log('旺旺饼干，我想吃！！！');
+					
+					// 狗叫，那么执行所有存储在wow数组中的回调
+					this.trigger('wow');
+				},
+				
+				// 狗想咬人
+				bite: function() {
+					console.log('这狗只咬吕洞宾');
+					
+					// 狗咬人，那么执行所有存储在bite数组中的回调
+					this.trigger('bite');
+				},
+				
+				// 根据指定类型，执行指定回调
+				trigger: function(type) {
+					this.eventCallback[type].forEach(function(fn) {
+						fn();
+					});
+				},
+				
+				// 提供一个方法，可以监听狗叫和狗咬人两种事件(说白了，就是添加一些狗做事情时，要执行的回调)
+				addWowFn: function(type, fn) {
+					
+					// 如果this.wowFns这个对象，已经存在type数组的，
+					// 那么使用已经存在的，否则初始化为一个新数组，
+					// 然后把传入的回调，添加到这个数组中，供将来对应事件发生时调用。
+					this.eventCallback[type] = this.eventCallback[type]? this.eventCallback[type]: [];
+					this.eventCallback[type].push(fn);
+				}
+			};
+			
+			/*------------------------------------------------*/
+			
+			// 创建3个实例对象
+			var zhuren = new Person('主人');
+			var lvdongbin = new Person('吕洞宾');
+			var xiaotou = new Thief('小偷');
+			var dagou = new Dog('藏獒');
+		
+			// 给狗叫的回调数组添加两个方法，当狗叫的时候，这两方法就会执行
+			dagou.addWowFn('wow', zhuren.wake);
+			dagou.addWowFn('wow', xiaotou.away);
+			
+			// 给狗咬人的回调数组添加两个方法，当狗咬人的时候，这两方法就会执行
+			dagou.addWowFn('bite', zhuren.sleep);
+			dagou.addWowFn('bite', xiaotou.steal);
+			
+			// 只要大狗叫了，主人就惊醒，小偷就逃跑
+			dagou.wow();
+			
+			// 狗去咬吕洞宾了，主人安心睡觉，小偷专心盗窃
+			dagou.bite();
+			
+		</script>
+	</body>
+</html>
+

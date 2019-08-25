@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/song.css" />
+    <script src="js/song_dx.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="songslist-op">
+        <label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" />
+        <label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" />
+        <button id="btnAdd">添加</button>
+        <button id="btnRemove">删除</button>
+        <button id="btnFind">搜索</button>
+        <button id="btnSave">保存</button>
+    </div>
+
+    <div class="songslist-header">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+        <div class="songslist-option">操作</div>
+    </div>
+    <div class="songslist-main" id="c">
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+    </div>
+</div>
+<script>
+	var songM = new SongManager();
+	songM.add({
+		name: '左手右手一个慢动作',
+		singer: '三个小伙子'
+	});
+	songM.add({
+		name: '光辉岁月',
+		singer: '洋家驹'
+	});
+	songM.add({
+		name: '喜欢你',
+		singer: '洋家驹'
+	});
+	
+	console.log(songM.songList);
+	
+	/*-------------------------把数据展示到页面中------------------------*/
+	
+
+	/**
+	 * 实现步骤：
+	 * 1、定义一个存放所有html结构的变量
+	 * 2、遍历歌曲列表数据
+	 * 3、根据每一条数据映射为每一段html结构累加到变量中
+	 * 4、获取存储歌曲列表的DOM容器，替换其innerHTML为动态拼接好的字符串
+	 * */
+	
+	// 根据数据渲染歌曲列表
+	function renderSongList(songList) {
+		var songListHTML = songList.map(function(songObj, i) {
+		return '<div class="songslist-single">' +
+					'<div class="songslist-name">' + songObj.name + '</div>' +
+					'<div class="songslist-singer">' + songObj.singer + '</div>' +
+				'</div>';
+		}).join('');
+		var songListMain = document.querySelector('.songslist-main');
+		songListMain.innerHTML = songListHTML;
+	}
+	
+	// 默认渲染
+	renderSongList(songM.songList);
+	
+	/*-----------------------------------------------------------------*/
+	
+	/**
+	 * 监听页面中的添加歌曲事件：
+	 * 1、事件发生时，首先获取表单中输入的歌曲与歌手
+	 * 2、调用歌曲管理对象已经实现好的add方法，添加对应歌曲对象
+	 * 3、再次调用渲染歌曲列表的方法，重新渲染最新数据
+	 * */
+	
+	var addBtn = document.querySelector('#btnAdd');
+	var songNameInput = document.querySelector('#txtAddSName');
+	var songSingerInput = document.querySelector('#txtAddSinger');
+	
+	addBtn.onclick = function() {
+		songM.add({
+			name: songNameInput.value,
+			singer: songSingerInput.value
+		});
+		renderSongList(songM.songList);
+	};
+	
+	/*-----------------------------------------------------------------*/
+	
+	/**
+	 * 监听页面中的删除歌曲事件：
+	 * 1、事件发生时，首先获取表单中输入的歌曲名词
+	 * 2、调用歌曲管理对象已经实现好的delete方法，删除对应歌曲对象
+	 * 3、再次调用渲染歌曲列表的方法，重新渲染最新数据
+	 * */
+	
+	var deleteBtn = document.querySelector('#btnRemove');
+	deleteBtn.onclick = function() {
+		songM.delete(songNameInput.value);
+		renderSongList(songM.songList);
+	};
+	
+	/*-----------------------------------------------------------------*/
+	
+	/**
+	 * 监听页面中的搜索歌曲事件：
+	 * 1、事件发生时，首先获取表单中输入的歌曲名词
+	 * 2、判断表单的值是不是为空
+	 * 3、如果是那么重新渲染整个列表
+	 * 4、如果不是则调用歌曲管理对象已经实现好的search方法，搜索对应的歌曲对象
+	 * 5、再次调用渲染歌曲列表的方法，把搜索到的歌曲对象包装成数组传递进入
+	 * */
+
+	var searchBtn = document.querySelector('#btnFind');
+	searchBtn.onclick = function() {
+		var searchName = songNameInput.value;
+		
+		// 如果没有输入，渲染整个列表，输入了就渲染搜索的结果
+		if(searchName.trim() === '') {
+			renderSongList(songM.songList);
+		}else {
+			var result = songM.search(searchName);
+			result = result? [result]: [];  // 如果搜索到了歌曲，包装成数组，没有搜索到，就初始化一个空数组
+			renderSongList(result);  // 根据得到数组，重新渲染歌曲列表
+		}
+	};
+	
+</script>
+</body>
+</html>

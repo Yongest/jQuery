@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	
+			var total = 0;
+			var fabCache = [];
+			function fabnacci(n) {
+				total++;
+				// 如果缓存过了，直接走缓存即可
+				if(fabCache[n]) {
+					return fabCache[n];
+				}
+				
+				// 如果之前没有缓存过，先把计算好的值缓存，再返回
+				// 那下次遇到同样的计算，直接走缓存即可。
+				if(n == 0 || n == 1) {
+					fabCache[n] = 1;
+				}else{
+					fabCache[n] = fabnacci(n - 2) + fabnacci(n - 1);
+				}
+				return fabCache[n];
+			}
+			
+			
+			// 只有第一次计算会稍微慢一点
+			console.log(fabnacci(50));
+			console.log(total);
+			
+			// 以后只要缓存过的数据，计算1次即可
+			total = 0;
+			console.log(fabnacci(45));
+			console.log(total);
+			
+			/*---------------------------------------------*/
+			
+//			function getFabnacci() {
+//				var fabCache = [];
+//				return function fabnacci(n) {
+//					if(fabCache[n]) {
+//						return fabCache[n];
+//					}
+//					if(n == 0 || n == 1) {
+//						fabCache[n] = 1;
+//					}else {
+//						fabCache[n] = fabnacci(n - 2) + fabnacci(n - 1);
+//					}
+//					return fabCache[n];
+//				}
+//			}
+//			
+//			var fabnacci = getFabnacci();
+//			fabnacci(51);
+//			fabnacci(50)
+
+			/*-----------------------------------*/
+			
+//			var fabnacci = (function() {
+//				var fabCache = [];
+//				return function(n) {
+//					if(fabCache[n]) {
+//						return fabCache[n];
+//					}
+//					if(n == 0 || n == 1) {
+//						fabCache[n] = 1;
+//					}else {
+//						fabCache[n] = fabnacci(n - 2) + fabnacci(n - 1);
+//					}
+//					return fabCache[n];
+//				}
+//			})();
+			
+			/*-----------------------------------*/
+			
+			// 自调函数执行，返回里面可以计算斐波那契数列的函数给外界变量
+			// 外界就可以使用里面的函数，但是缓存数据外界是无法操作的。
+			var fabnacci = (function() {
+				var fabCache = [1, 1];
+				return function(n) {
+					
+					// 如果缓存过，直接返回缓存数据
+					// 如果没有，先递归计算结果，把结束缓存起来然后返回
+					return fabCache[n] || (fabCache[n] = fabnacci(n - 2) + fabnacci(n - 1));
+				}
+			})();
+			
+			console.log(fabnacci(10));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 构造函数：
+			 * 可以配合new关键字创建出实例的函数，就称之为构造函数。
+			 * 
+			 * 
+			 * 因为内置的构造函数有限，如果要进行面向对象开发，通过要创建很多类型的实例。
+			 * 那么就需要我们自定义去创建构造函数。如何创建自定义构造函数？说白了，就是定义以个函数。
+			 * */
+			
+			// 如果定义的函数是构造函数，那么业界有一个潜规则，函数名首字母大写。
+			function Person(name, age, sex) {
+				// 这里的this通常指向new出来的实例
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+				this.helper = function(p) {
+					console.log('帮助'+p.name + '同学打水');
+				}
+			}
+			
+			// 使用构造函数可以简化创建对象的过程
+			var zhangyuan = new Person('张媛', 16, '女');
+			var zhuwu = new Person('朱武', 13, '男');
+			
+			// 张媛和朱武两个对象身上，分别含有属于自己的属性与方法，这就可以理解是js的封装性。
+			console.log(zhangyuan);
+			console.log(zhuwu);
+			zhangrui.helper(zhuwu);
+		</script>
+	</body>
+</html>

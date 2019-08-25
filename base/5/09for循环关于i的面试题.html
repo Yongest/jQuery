@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = ['第一句话', '第二句话', '第三句话'];
+			
+			// 要求按照顺序每隔1秒说一句话
+//			var index = 0;
+//			var timer = setInterval(function() {
+//				console.log(arr[index++]);
+//				
+//				// 打印3次后，终止定时器
+//				if(index >= arr.length) {
+//					clearInterval(timer);
+//				}
+//			}, 1000);
+			
+			/*---------------------------------------------*/
+			
+			// 查找下面代码存在的问题，并加以解决
+			for(var i = 0, len = arr.length; i < len; i++) {
+				setTimeout(function() {
+					console.log(arr[i]);
+				}, 1000);
+			}
+			console.log(i)
+			/**
+			 * 上面代码存在两个问题：
+			 * 1、执行时间
+			 *   上面的代码根据数组的数量进行遍历，开启定时器，但是这些定时器的时间都是1秒后，
+			 * 也就是说1秒之后4个定时器的回调一一执行，并不是每隔一秒执行。
+			 * 
+			 * 2、打印的值
+			 *    因为回调的执行在for循环之后，for循环之后，i的最终值为3，所以打印arr[3]都为undefined。
+			 * */
+			
+
+		</script>
+	</body>
+</html>

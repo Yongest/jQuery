@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 沙箱模式：
+			 * 把一些代码放在一个封闭的环境中执行，防止它对外界环境造成潜在影响。
+			 * 
+			 * 自调函数：
+			 * 开发当中我们把可以代码使用自调包裹起来，这样可以防止全局变量的污染。
+			 * */
+			
+			// 可以在一个js文件中，通过多个自调函数来分隔自己的代码，让他们之间互相不受影响
+			(function() {
+				var body = document.body;
+				var script = document.querySelector('script');
+				body.backgroundColor = 'pink';
+			})();
+			
+			// 可以在一个js文件中，通过多个自调函数来分隔自己的代码，让他们之间互相不受影响
+			(function() {
+				var arr = [1,2,3,4];
+				var result = arr.map(function(v, i) {
+					return v * v * v;
+				});
+				console.log(result);
+			})();
+		</script>
+	</body>
+</html>

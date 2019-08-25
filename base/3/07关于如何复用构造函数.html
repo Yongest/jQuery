@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Animal(name, age, color) {
+				this.name = name;
+				this.age = age;
+				this.color = color;
+			}
+			Animal.prototype.eat = function() {
+				console.log('谁不爱吃呢?');
+			};
+			
+			
+			function Person(name, age, color) {
+				// 这里的this，不是小海就是大海。
+				// 小海调用Animal，Animal里的this就指向了小海，
+				// Aimal里面的代码执行时，就会给小海添加属性，达到代码复用的目的。
+				this.Animal = Animal;
+				this.Animal(name, age, color);
+			}
+			//Person.prototype = new Animal;
+			
+			// 人类实例
+			var xiaohai = new Person('小海', 18, '黄');
+			var dahai = new Person('大海', 28, '白');
+			//xiaohai.eat();
+			console.dir(xiaohai);
+			console.dir(dahai);
+		</script>
+	</body>
+</html>

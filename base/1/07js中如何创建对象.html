@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 使用js语言描述一个张媛同学
+			var obj = {};
+			obj.name = "张媛";
+			obj.age = 16;
+			obj.sex = '女';
+			obj.study = function() {
+				console.log('目前正在学习如何在睡梦中学习');
+			};
+			obj.helper = function( p ) {
+				console.log('帮助'+p.name + '同学打水');
+			};
+			
+			// 创建好对象之后，就可以使用这个对象帮助我们解决一些问题
+			obj.helper({ name: '朱武' });
+		</script>
+	</body>
+</html>

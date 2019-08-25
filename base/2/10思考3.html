@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			
+			Person.prototype.max_age = 250;
+		
+			var xiaohai = new Person('小海', 16);
+			var laowu = new Person('老五', 38);
+			
+			// 这仅仅是给小海自己添加了一个max_age属性，不会影响原型，也不会影响老五。
+			xiaohai.max_age = 300;        
+			console.log(xiaohai.max_age); // 300，优先找到自己的max_age
+			console.log(laowu.max_age);  // 250，自己没有，找到原型上的max_age
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * js在执行如下代码时，先会预解析，
+			 * 把a变量的声明提前了。
+			 * 把fn函数的声明提前了。
+			 * 
+			 * 预解析结束之后，代码才逐行依次执行，
+			 * 这时候打印a，已经声明过了，所以不会报错。
+			 * 这时候打印fn，已经声明过了，所以不会报错。
+			 * 
+			 * js在预解析之后，会逐行执行代码，但是预解析过的变量声明和函数声明部分，不会重复执行。
+			 */
+			
+			// js中的全局代码在执行时，会存在预解析。
+			console.log(a);
+			console.log(fn);
+			
+			var a = 10;
+			function fn(){}
+			
+			// js中的函数在执行时，也会存在预解析。
+			function f() {
+				console.log(b);
+				console.log(f);
+				var b = 10;
+				function f(){}
+			}
+			
+			f();
+		</script>
+	</body>
+</html>

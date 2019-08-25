@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// fn ==> Function.prototype ==> Object.prototype ==> null
+			var fn = function(){};
+		
+			console.log(fn.__proto__.constructor);
+			console.log(fn.__proto__.__proto__.constructor);
+			
+			/*---------------------------------*/
+			
+			// f ==> Function.prototype ==> Object.prototype ==> null
+			var f = new Function;
+			console.log(f.__proto__.constructor);
+			console.log(f.__proto__.__proto__.constructor);
+		</script>
+	</body>
+</html>

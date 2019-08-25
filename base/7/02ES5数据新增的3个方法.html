@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * ES5数据新增的3个方法
+			 * 
+			 * forEach:
+			 * 作用：遍历数组,可以简化我们遍历数组的代码
+			 * 语法：数组.forEach(function(v, i, arr) {
+			 *         console.log(v, i, arr);
+			 *     });
+			 * 返回值：无,undefined
+			 * 
+			 * map:
+			 * 作用：遍历数组，map最初的作用是用过一组数组映射为另外一组数据
+			 * 语法：数组.map(function(v, i, arr) {
+			 * 			console.log(v, i, arr);
+			 * 			return 10 * i;
+	         *     });
+	         * 返回值：回调所有的返回值构成的新数组
+	         * 
+	         * filter:
+	         * 作用：过滤掉数组中的值
+	         * 语法：数组.filter(function(v, i, arr) {
+	         * 	       return true;
+	         *     })
+	         * 返回值：过滤后剩下的值
+			 * */
+			
+			var arr = ['hi', '早上吃饭了吗', '不吃早饭会肾结石', '怕了吗', '怕了喝水也行'];
+			
+			/*---------------------------forEach--------------------------------*/
+			
+			// 数组调用forEach，传入的回调，数组长度有多少，回调执行多少次。
+//			var result = arr.forEach(function() {
+//				console.log(arguments[0], arguments[1], arguments[2]);
+//			});
+//			console.log(result);
+			
+			
+			/*------------------------------map-----------------------------*/
+			
+//			var result = arr.map(function(v, i) {
+//				if(i === 0) {
+//					return v + ' 胖大海!';
+//				}else {
+//					return v + '?';
+//				}
+//			});
+//			console.log(result);
+//			
+//			
+//			var result2 = [1, 5, 2, 9, 6].map(function(v) {
+//				return v * v;
+//			});
+//			console.log(result2);
+			
+			
+			/*------------------------------filter-----------------------------*/
+			
+			
+			// 获取数组中下标为偶数的所有值
+			var result = arr.filter(function(v, i) {
+				if(i % 2 === 0) {
+					return true;
+				}
+			});
+			console.log(result);
+
+			
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+				Person.$ = '800$';
+			}
+			
+			var xiaohai = new Person('小海', 16);
+			
+			// 实例不能访问构造函数的属性，构造函数也不能访问实例的属性，
+			// 具体就以对象的属性访问规则来分析即可。
+			console.log(xiaohai.$);
+			console.log(Person.age);
+		</script>
+	</body>
+</html>

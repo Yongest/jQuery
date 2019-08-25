@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var a = 10;
+//			(function() {
+//				var a = a;
+//				console.log(a);
+//				
+//				/**
+//				 * 预解析：
+//				 * var a;  // 声明提升，自调内拥有了自己的a，值为undefined
+//				 * 
+//				 * 逐行执行：
+//				 * a = a;   // 在赋值的时候，会去确定a的值，优先找内部，找到a为undefined，最终还是给a赋了undefined
+//				 * */
+//			})();
+			
+			
+			/*-------------------------------------------*/
+			
+			var a = 10;
+			(function() {
+				var b = a;
+				console.log(b);
+			})();
+			
+			/*-------------------------------------------*/
+			
+			var a = 10;
+			// 自调函数执行时可以传递参数，把全局下的a值传递给自调的形参，
+			// 最终自调的形参a值为10。
+			(function(a) {
+				console.log(a);   // 10
+			})(a);
+			
+			// ！！！！上面的要是不好接受，类比下面的代码。！！！！！
+			var a = 10;
+			// 自调函数执行时可以传递参数，把全局下的a值传递给自调的形参，
+			// 最终自调的形参a值为10。
+			function fn(a) {
+				console.log(a);  // 10
+			}
+			fn(a);
+			
+		</script>
+	</body>
+</html>

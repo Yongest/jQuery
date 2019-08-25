@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 存在Person类与Animal类
+			// Person类按照常理来说也是一种动物，
+			// 所以Animal提供的一些属性与方法，Person也应该提供。
+			
+			function Animal(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			Animal.prototype = {
+				eat: function() {
+					console.log('动物改不了吃');
+				},
+				run: function() {
+					console.log('不能动的不叫动物');
+				}
+			};
+			
+			function Person(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			
+			/*Person.prototype = {
+				study: function() {
+					console.log('无敌模仿能力');
+				}
+			};*/
+			
+			// 解决方案1，但是存在弊端，这样搞人类和动物就没啥区别了
+			Person.prototype = Animal.prototype;
+			Person.prototype.study = function() {
+				console.log('无敌模仿能力');
+			}
+			
+			// 有没有什么办法，能给让Person实例使用Animal原型上的方法
+			var long = new Person('龙', 45, '男');
+			var feng = new Person('凤', 30, '女');
+			long.eat();
+			long.run();
+			
+			var shulan = new Animal('树懒', 3, '公');
+			shulan.study();
+		</script>
+	</body>
+</html>

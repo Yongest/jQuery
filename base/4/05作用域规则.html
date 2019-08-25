@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 在js中，使用的作用域规则为函数作用域；
+			 * 通常其他语言中都为块级作用域，而js中没有块级作用域。
+			 * 
+			 * 块级作用域：
+			 * 在代码块内定义的变量，只能在代码块内使用。
+			 * 
+			 * 函数作用域：
+			 * 在函数内定义的变量，只能在函数内使用；在代码块内定义的变量，可以在代码块的外面使用。
+			 * */
+			
+			
+			// 如果是其他主流语言，在代码块定义的a，外面是无法使用的。
+			// 但是js没有块级作用域,所以可以使用。
+			{
+				var a = 10;
+				console.log(a);
+			}
+			console.log(a);
+			
+			// 在函数内定义的变量，只能在函数内使用。
+			(function fn() {
+				var b = 888;
+				console.log(b);
+			})();
+			console.log(b);
+			
+		</script>
+	</body>
+</html>

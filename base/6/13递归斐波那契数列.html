@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 斐波那契数列[1,1,2,3,5,8,13,21,34,55,89,144]
+			 * fab[0] = 1
+			 * fab[1] = 1
+			 * fab[2] = 2
+			 * fab[3] = 3
+			 * fab[4] = 5
+			 * */
+			 
+			 // 递归求指定下标的斐波那契数列值
+//			 function fabnacci0() {
+//			 	return 1;
+//			 }
+//			 
+//			 function fabnacci1() {
+//			 	return 1;
+//			 }
+//			 
+//			 function fabnacci2() {
+//			 	return fabnacci0() + fabnacci1();
+//			 }
+//			 
+//			 function fabnacci3() {
+//			 	return fabnacci1() + fabnacci2();
+//			 }
+			 
+			 /*-----------------------------------------*/
+			
+//			function fabnacci(n) {
+//				if(n == 0 || n == 1) {
+//					return 1;
+//				}else if(n == 2) {
+//					return fabnacci(0) + fabnacci(1);
+//				}else if(n == 3) {
+//					return fabnacci(1) + fabnacci(2);
+//				}
+//			}
+			
+			 /*-----------------------------------------*/
+			
+			function fabnacci(n) {
+				if(n == 0 || n == 1) {
+					return 1;
+				}else{
+					return fabnacci(n - 2) + fabnacci(n - 1);
+				}
+			}
+			
+			console.log(fabnacci(10));
+		</script>
+	</body>
+</html>

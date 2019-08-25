@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function ShengWu() {}
+			ShengWu.prototype.shengWu = function() {
+				console.log('可以新陈代谢');
+			};
+			
+			function DongWu() {}
+			DongWu.prototype = new ShengWu;
+			DongWu.prototype.dongWu = function() {
+				console.log('可以自主行动');
+			};
+			
+			function ReXueDongWu() {}
+			ReXueDongWu.prototype = new DongWu;
+			ReXueDongWu.prototype.reXueDongWu = function() {
+				console.log('激情澎湃');
+			};
+			
+			// 人可以使用上诉3个类的方法
+			function Ren() {}
+			Ren.prototype = new ReXueDongWu;
+			Ren.prototype.ren = function() {
+				console.log('主宰其它生物');
+			};
+			
+			// 测试
+			var r = new Ren();
+			r.ren();
+			r.reXueDongWu();
+			r.dongWu();
+			r.shengWu();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 这是一个数组类型的对象
+			var arr = new Array;
+			
+			// 这是一个函数类型的对象
+			var Arr = Array;
+			
+			/*-------------------------*/
+			
+			// 这是一个正则类型的对象
+			var reg = /abc/;
+			
+			// 这是一个函数类型的对象
+			var Reg = RegExp;
+			
+			/*----------------------------*/
+			
+			// 这是一个函数类型的对象
+			var Person = function(){};
+			
+			// 这是一个人类型的对象
+			var p = new Person;
+			
+			/**
+			 * 可以把函数类型的对象，看作是女人，
+			 * 女人可以创造属于自己的孩子。
+			 * 
+			 * 所有的函数是一个类型，
+			 * 但是函数比较特殊，它可以创建出以自己名字命名的对象类型。
+			 * */
+			
+			// 这俩函数是同一个类型的对象
+			function Person(){}
+			function Animal(){}
+			
+			// 这俩对象不是同一个类型的。
+			var p = new Person;
+			var a = new Animal;
+		</script>
+	</body>
+</html>
