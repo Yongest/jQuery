@@ -20,7 +20,7 @@
 
 
     var
-	version = "3.4.1",
+	version = "1.0.0",
 
 	// 3.$的函数体是一个工厂模式
 	jQuery = function( selector, context ) {
@@ -32,7 +32,18 @@
     
     //4. fn 是jQuery 原型的简称。
     jQuery.fn = jQuery.prototype = {
-        constructor:jQuery
+        jquery,version,
+        length:0,
+        constructor:jQuery,
+        get:function(num){
+            // 比较严谨，判断有没有传参
+            if(arguments.length===0){
+                return slice.call(this)
+            }else {
+                // Return just the one element from the set
+		        return num < 0 ? this[ num + this.length ] : this[ num ];
+            }
+        }
      
     };
 
