@@ -89,6 +89,23 @@
         },
         end:function(){
             return this.preObj;
+        },
+        each:function(obj,fn){
+            // 1.判断obj是不是数组或者伪数组，如果是，则用var i 的形式遍历它，
+            // 2.如果是其他对象，则使用for in 的形式遍历它，因为 for in 可以遍历到原型上可枚举的方法
+            // 3.把遍历到的下标和值依次传递给回调。
+            // 4.each 方法会改变传入回调执行时的this,这个值就是编列到的value
+
+            // 判断是不是数组
+            if(obj instanceof Array){
+                for(var i = 0;i<obj.length;i++){
+                    fn(i,obj[i])
+                }
+            }else {
+                for(var key in obj){
+                    fn(key,obj[k])
+                }
+            }
         }
      
     };
