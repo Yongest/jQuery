@@ -78,3 +78,22 @@ jQ的静态成员 $.ajax
 	})(window);
 
 ![](./img/init.png)
+
+splice  拼接  index  howmany   item1, ..., itemX
+
+
+
+### arrayObject.slice(start,end)    slice() 方法可从已有的数组中返回选定的元素。
+
+### arrayObject.splice(index,howmany,item1,.....,itemX)   然后返回被删除的项目
+
+  var obj = {}
+
+  [].push.call(obj,1)
+  log(obj)
+
+  obj.push = [].push;
+
+  obj.push(10)
+
+  log(obj)

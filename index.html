@@ -10,21 +10,28 @@
     <script src="./myjQ.js"></script>   
     <span>0</span>
     <span>1</span>
+    
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
     <script>
-        console.log(document.querySelectorAll('span'));
-        $(function(){
-            console.log(document.querySelectorAll('span'));
-            
-        })
-        
-        console.log($(document.querySelectorAll('span')));
-        console.log($('<a class="active123">2222</a>'));
+        var {log} = console;
 
+        // log(document.querySelectorAll('span'));
+        // $(function(){
+        //     log(document.querySelectorAll('span'));
+            
+        // })
+        
+        // log($(document.querySelectorAll('span')));
+        // log($('<a class="active123">2222</a>'));
+            // log($('span').pushStack().end())
+            var arr = $('span').slice(0,2);
+            log(arr)
+            
+            log(arr.end())
         
     </script>
 
-    <span>2</span>
-    <span>2</span>
-    <span>2</span>
 </body>
 </html>

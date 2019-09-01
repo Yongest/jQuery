@@ -9,11 +9,12 @@
     var document = window.document;
 
     var slice = arr.slice;
+    var splice = arr.splice;
 
     var concat = arr.concat;
 
     var push = arr.push;
-
+    var sort = arr.sort;
     var obj = {};
     var toString = obj.toString;
     var hasOwn = obj.hasOwnProperty;
@@ -32,9 +33,10 @@
     
     //4. fn 是jQuery 原型的简称。
     jQuery.fn = jQuery.prototype = {
-        jquery,version,
+        jquery:version,
         length:0,
         constructor:jQuery,
+        // 返回的原生dom元素，并没有继承jq的原型，
         get:function(num){
             // 比较严谨，判断有没有传参
             if(arguments.length===0){
@@ -43,6 +45,50 @@
                 // Return just the one element from the set
 		        return num < 0 ? this[ num + this.length ] : this[ num ];
             }
+        },
+        eq:function(num){
+            // 1.正数或0按照指定下标获取对应的元素，非正数倒着获取对应的元素
+            // 2.然后把获取到的元素包装成jQ对象返回
+            // return jQuery(this.get(num))
+
+            return this.pushStack(this.get(num))
+        },
+        first:function(){
+            return this.eq(0)
+        },
+        last:function(){
+            return this.eq(-1)
+        },
+        toArray:function(){
+            // 把jQ实列转换为数组返回
+           return slice.call(this)
+        },
+        slice:function(start,end){
+           var arr = slice.call(this,start,end);
+
+        //    return jQuery(arr);
+            // slice返回的是截取后的新实例，链断啦
+            // 所以要记录上级链，只要记录上级链，就交由pushStack处理
+            return this.pushStack(arr)
+        },
+        push:function(){
+          return  push.apply(this,arguments)
+        },
+        // _push 这个属性存储的就是数组的push,通过jQ实例调用这个方法，
+        // 是方法调用模式，那么_push 执行的时候内部this已经为jQ实例啦，就不用在call或apply 啦
+        _push:push,
+        sort:sort,
+        splice:splice,
+        pushStack:function(arr){
+            // pushStack 方法内部会 新 创建一个JQ实例，
+            //然后给这个实例添加一个preObj属性，记录该方法的调用者
+            var $new = jQuery(arr);
+            $new.preObj = this;
+            return $new;
+            // return this.preObj = this;
+        },
+        end:function(){
+            return this.preObj;
         }
      
     };
