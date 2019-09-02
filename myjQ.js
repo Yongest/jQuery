@@ -90,25 +90,34 @@
         end:function(){
             return this.preObj;
         },
-        each:function(obj,fn){
-            // 1.判断obj是不是数组或者伪数组，如果是，则用var i 的形式遍历它，
+        each:function(fn){
+           return each(this,fn)
+        }
+     
+    };
+
+     // 1.判断obj是不是数组，如果是，则用var i 的形式遍历它，
             // 2.如果是其他对象，则使用for in 的形式遍历它，因为 for in 可以遍历到原型上可枚举的方法
             // 3.把遍历到的下标和值依次传递给回调。
             // 4.each 方法会改变传入回调执行时的this,这个值就是编列到的value
 
             // 判断是不是数组
-            if(obj instanceof Array){
+           function each(obj,fn){
+            if( isArrayLike(obj)){
                 for(var i = 0;i<obj.length;i++){
-                    fn(i,obj[i])
+                    if(fn.call(obj[i],i,obj[i])===false){    // 如果回调返回false，each 支持中断
+                        break;
+                    }
                 }
             }else {
                 for(var key in obj){
-                    fn(key,obj[k])
+                   if( fn.call(obj[k],key,obj[k])===false){
+                       break;
+                   }
                 }
             }
-        }
-     
-    };
+            return obj;
+           }
 
     // 判断是不是window
     function isWindow(w){
@@ -237,13 +246,16 @@
         }
         // 如果参数是字符串
         else if(isString(selector)){
+            
             // 如果是HTML字符串
             if(isHTML(selector)){
-
+                
                 push.apply(this,parseHTML(selector));
                 // 否则，认为是选择器，去页面中获取元素，把获取到的元素依次添加到实例中
             }else {
+                
                 push.apply(this,document.querySelectorAll(selector))
+               
             }
         }
         // 如果参数是数组或者伪数组
@@ -258,6 +270,7 @@
             }
            
         }
+        
     }
 
 
