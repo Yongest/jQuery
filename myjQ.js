@@ -92,6 +92,10 @@
         },
         each:function(fn){
            return each(this,fn)
+        },
+        map:function(fn){
+            return this.pushStack(map(this,fn))
+            // return jQuery(map(this,fn))
         }
      
     };
@@ -119,6 +123,28 @@
             return obj;
            }
 
+           function map(obj,fn){
+               var result = [],temp;
+            if( isArrayLike(obj)){
+                for(var i = 0;i<obj.length;i++){
+                    temp = fn.call(obj[i],i,obj[i]);
+                    if(temp!=null){    // 如果回调返回false，each 支持中断
+                       result.push(temp)
+                    }
+                }
+            }else {
+                for(var key in obj){
+                    temp = fn.call(obj[k],key,obj[k]);
+                   if( temp!=null){
+                    if(temp!=null){    // 如果回调返回false，each 支持中断
+                        result.push(temp)
+                     }
+                   }
+                }
+            }
+            console.log(result)
+            return result;
+           }
     // 判断是不是window
     function isWindow(w){
         return !!w && w.window === w

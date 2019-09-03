@@ -31,8 +31,11 @@
             
             // log(arr.end())
 
-            log($('span').each(function(){
-                this.style.fontSize = '50px'
+            log($('span').map(function(key,val){
+                // this.style.fontSize = '50px'
+                if(key%2===0){
+                    return this;
+                }
             }))
         
     </script>
