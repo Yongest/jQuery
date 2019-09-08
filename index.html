@@ -31,12 +31,22 @@
             
             // log(arr.end())
 
-            log($('span').map(function(key,val){
-                // this.style.fontSize = '50px'
-                if(key%2===0){
-                    return this;
-                }
-            }))
+            // log($('span').map(function(key,val){
+            //     // this.style.fontSize = '50px'
+            //     if(key%2===0){
+            //         return this;
+            //     }
+            // }))
+
+          
+            var a = {a:1}
+            var b = {b:2}
+       $.extend({
+           dir:function(){
+               log(1)
+           }
+       })
+       log($.extend(a,b))
         
     </script>
 
