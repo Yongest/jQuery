@@ -233,9 +233,10 @@
         },
 
         /*
-         * 只有有一个元素有，那么就返回true，都没有返回false。
+         * 只要有一个元素有，那么就返回true，都没有返回false。
          * */
         hasClass: function(cName) {
+
             var has = false;
             this.each(function() {
                 if( (' ' + this.className + ' ').indexOf(' '+ cName +' ') > -1 ) {
